@@ -25,8 +25,7 @@
         <spring-boot-admin.version>3.2.3</spring-boot-admin.version>
         
         <dynamic-datasource.version>4.3.1</dynamic-datasource.version>
-        <mybatis.version>3.5.16</mybatis.version>
-        <mybatis-plus.version>3.5.8</mybatis-plus.version>
+        <mybatis-plus.version>3.5.9</mybatis-plus.version>
         
         <hutool.version>5.8.33</hutool.version>
         <lombok.version>1.18.34</lombok.version>
@@ -93,21 +92,11 @@
             </dependency>
             
             <dependency>
-                <groupId>org.mybatis</groupId>
-                <artifactId>mybatis</artifactId>
-                <version>${mybatis.version}</version>
-            </dependency>
-            
-            <dependency>
                 <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <artifactId>mybatis-plus-bom</artifactId>
                 <version>${mybatis-plus.version}</version>
-            </dependency>
-            
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-annotation</artifactId>
-                <version>${mybatis-plus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             
             <dependency>
@@ -131,6 +120,12 @@
             <dependency>
                 <groupId>com.ruoyi</groupId>
                 <artifactId>ruoyi-demo</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-common-mybatis</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

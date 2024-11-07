@@ -13,7 +13,6 @@ import java.util.Map;
  * @author coriander
  */
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultData implements Serializable {
     
     /**
@@ -36,6 +35,7 @@ public class ResultData implements Serializable {
      */
     private long timestamp;
     
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Map<Path, String> validationErrorList;
     
     

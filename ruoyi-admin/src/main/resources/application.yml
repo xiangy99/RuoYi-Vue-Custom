@@ -2,8 +2,6 @@
 ruoyi:
   # 名称
   name: RuoYi-Vue-Custom
-  # 版本
-  version: ${revision}
 
 # 开发环境配置
 server:
@@ -68,3 +66,20 @@ spring:
     deserialization:
       # 允许对象忽略json中不存在的属性
       fail_on_unknown_properties: false
+
+# MyBatisPlus配置
+# https://baomidou.com/reference/
+mybatis-plus:
+  # 多包名使用 例如 com.ruoyi.**.mapper,org.xxx.**.mapper(此配置在 MybatisPlusConfig 中使用)
+  # noinspection SpringBootApplicationYaml
+  mapperPackage: com.ruoyi.**.mapper
+  # 对应的 XML 文件位置
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  # 实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.ruoyi.**.domain.pojo
+  global-config:
+    dbConfig:
+      # 主键类型
+      # AUTO 自增 NONE 空 INPUT 用户输入 ASSIGN_ID 雪花 ASSIGN_UUID 唯一 UUID
+      # 如需改为自增 需要将数据库表全部设置为自增
+      idType: ASSIGN_ID

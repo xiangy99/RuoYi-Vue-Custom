@@ -52,7 +52,7 @@ public class IdUtil {
     /**
      * 序列在id中占的位数
      */
-    private final  static long sequenceBits = 12L;
+    private final static long sequenceBits = 12L;
     
     /**
      * 机器ID向左移12位
@@ -77,7 +77,7 @@ public class IdUtil {
     /**
      * 工作机器ID(0~31)
      */
-    private long  workerId;
+    private long workerId;
     
     /**
      * 数据中心ID(0~31)
@@ -119,12 +119,14 @@ public class IdUtil {
     
     /**
      * 生成数据库主键ID
+     *
      * @return 数据库主键ID
      */
-    public static Long getId(){
+    public static Long getId() {
         IdUtil idWorker = new IdUtil(1, 1);
         return idWorker.nextId();
     }
+    
     /**
      * 获得下一个ID (该方法是线程安全的)
      *
@@ -196,6 +198,7 @@ public class IdUtil {
     
     /**
      * 解析主键ID，获取工作ID，数据中心ID，ID对应时间
+     *
      * @param id 主键ID
      * @return 工作ID，数据中心ID，ID对应时间
      */
@@ -224,6 +227,7 @@ public class IdUtil {
         jsonObject.put("dateTime", DateUtil.formatDateTime(date));
         return jsonObject;
     }
+    
     private static Date formatTime(long date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(date);
@@ -236,12 +240,11 @@ public class IdUtil {
      * 测试
      */
     public static void main(String[] args) {
-        IdUtil idWorker = new IdUtil(1, 1);
-        for (int i = 0; i < 1000; i++) {
+        IdUtil idWorker = new IdUtil(10, 10);
+        for (int i = 0; i < 5; i++) {
             long id = idWorker.nextId();
             System.out.println(id);
             System.out.println(parseInfo(id));
-            
         }
     }
 }

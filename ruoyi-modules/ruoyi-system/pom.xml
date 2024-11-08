@@ -7,9 +7,10 @@
         <version>${revision}</version>
     </parent>
     
-    <artifactId>ruoyi-demo</artifactId>
+    <artifactId>ruoyi-system</artifactId>
     
-    <name>ruoyi-demo</name>
+    <name>ruoyi-system</name>
+    
     
     <dependencies>
         <dependency>

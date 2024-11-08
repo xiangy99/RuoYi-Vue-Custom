@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysOperateLogMapper">
+  <resultMap id="BaseResultMap" type="com.ruoyi.system.domain.pojo.SysOperateLog">
+    <!--@mbg.generated-->
+    <!--@Table sys_operate_log-->
+    <id column="operate_id" jdbcType="BIGINT" property="operateId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="business_type" jdbcType="INTEGER" property="businessType" />
+    <result column="method" jdbcType="VARCHAR" property="method" />
+    <result column="request_method" jdbcType="VARCHAR" property="requestMethod" />
+    <result column="operator_type" jdbcType="INTEGER" property="operatorType" />
+    <result column="operator_name" jdbcType="VARCHAR" property="operatorName" />
+    <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="param" jdbcType="VARCHAR" property="param" />
+    <result column="json_result" jdbcType="VARCHAR" property="jsonResult" />
+    <result column="cost_time" jdbcType="BIGINT" property="costTime" />
+    <result column="operate_status" jdbcType="CHAR" property="operateStatus" />
+    <result column="error_msg" jdbcType="VARCHAR" property="errorMsg" />
+    <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    operate_id, title, business_type, `method`, request_method, operator_type, operator_name, 
+    dept_name, url, ip, `location`, param, json_result, cost_time, operate_status, error_msg, 
+    operate_time
+  </sql>
+</mapper>

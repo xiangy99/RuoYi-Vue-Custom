@@ -13,5 +13,6 @@
     <name>ruoyi-modules</name>
     <modules>
         <module>ruoyi-demo</module>
+        <module>ruoyi-system</module>
     </modules>
 </project>

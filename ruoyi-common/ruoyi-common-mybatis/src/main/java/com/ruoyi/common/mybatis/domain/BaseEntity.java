@@ -12,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,7 +41,7 @@ public class BaseEntity implements Serializable {
      */
     @Schema(description = "创建时间")
     @TableField(fill = FieldFill.INSERT)
-    private Date createTime;
+    private LocalDateTime createTime;
     
     /**
      * 更新者
@@ -55,7 +55,7 @@ public class BaseEntity implements Serializable {
      */
     @Schema(description = "更新时间")
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Date updateTime;
+    private LocalDateTime updateTime;
     
     /**
      * 请求参数

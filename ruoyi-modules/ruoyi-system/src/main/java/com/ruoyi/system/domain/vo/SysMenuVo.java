@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Link
  * @date 2024-11-08
@@ -19,5 +22,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @AllArgsConstructor
 public class SysMenuVo extends SysMenu {
-
+    
+    /**
+     * 子菜单
+     */
+    private List<SysMenuVo> children = new ArrayList<>();
 }

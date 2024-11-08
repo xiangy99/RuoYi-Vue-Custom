@@ -9,6 +9,8 @@ import com.ruoyi.common.mybatis.domain.PageLight;
 import com.ruoyi.demo.domain.pojo.TestDemo;
 import com.ruoyi.demo.domain.vo.TestDemoVo;
 import com.ruoyi.demo.service.TestDemoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +27,7 @@ import static com.ruoyi.common.mybatis.domain.PageSupport.ORDERS;
  * @author Link
  * @date 2024-11-07
  */
+@Tag(name = "TestDemo测试", description = "TestDemoController测试")
 @RestController
 @RequestMapping("/testDemo")
 public class TestDemoController {
@@ -35,6 +38,7 @@ public class TestDemoController {
         this.testDemoService = testDemoService;
     }
     
+    @Operation(summary = "保存", description = "保存")
     @PostMapping
     public ResultData save() {
         TestDemo testDemo = new TestDemo();
@@ -42,6 +46,7 @@ public class TestDemoController {
         return ResultData.success();
     }
     
+    @Operation(summary = "修改", description = "修改")
     @PutMapping
     public ResultData update() {
         TestDemo testDemo = testDemoService.getById(3569377419200696320L);
@@ -52,6 +57,7 @@ public class TestDemoController {
         return ResultData.success();
     }
     
+    @Operation(summary = "删除", description = "根据ID删除")
     @DeleteMapping
     public ResultData del(@RequestParam Long id) {
         // 逻辑删除。字段需要添加@TableLogic
@@ -59,6 +65,7 @@ public class TestDemoController {
         return ResultData.success();
     }
     
+    @Operation(summary = "详情", description = "根据ID获取详情")
     @GetMapping
     public Result<TestDemoVo> get(Long id) {
         
@@ -67,6 +74,7 @@ public class TestDemoController {
         return Result.success(testDemoService.getVo(id));
     }
     
+    @Operation(summary = "分页", description = "查询分页列表")
     @GetMapping("/page")
     public Result<PageLight<TestDemo>> page() {
         return Result.success(testDemoService.page());

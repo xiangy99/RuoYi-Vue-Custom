@@ -83,3 +83,17 @@ mybatis-plus:
       # AUTO 自增 NONE 空 INPUT 用户输入 ASSIGN_ID 雪花 ASSIGN_UUID 唯一 UUID
       # 如需改为自增 需要将数据库表全部设置为自增
       idType: ASSIGN_ID
+
+springdoc:
+  api-docs:
+    # 是否开启接口文档
+    enabled: true
+  group-configs:
+    - group: '演示模块'
+      display-name: '演示模块'
+      packages-to-scan: com.ruoyi.demo
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn

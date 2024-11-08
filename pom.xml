@@ -31,6 +31,7 @@
         <lombok.version>1.18.34</lombok.version>
         <mapstruct-plus.version>1.4.5</mapstruct-plus.version>
         <mapstruct-plus.lombok.version>0.2.0</mapstruct-plus.lombok.version>
+        <knife4j-openapi3.version>4.5.0</knife4j-openapi3.version>
         
         <!-- 限制框架中的fastjson版本 -->
         <fastjson.version>1.2.83</fastjson.version>
@@ -104,6 +105,13 @@
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+            
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j-openapi3.version}</version>
+            </dependency>
+            
             
             <dependency>
                 <groupId>com.ruoyi</groupId>

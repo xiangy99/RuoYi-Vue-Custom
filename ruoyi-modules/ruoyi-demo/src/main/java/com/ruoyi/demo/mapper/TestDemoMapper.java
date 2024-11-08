@@ -9,11 +9,9 @@ import com.ruoyi.demo.domain.vo.TestDemoVo;
  * ${DESCRIPTION}
  *
  * @author Link
- * @date 2024-11-07
+ * @date 2024-11-08
  */
 public interface TestDemoMapper extends BaseMapperPlus<TestDemo, TestDemoVo> {
     
     Page<TestDemo> page(Page<TestDemo> param);
-    
-    
 }

@@ -2,3 +2,4 @@ com.ruoyi.common.web.config.JacksonConfig
 com.ruoyi.common.web.config.UndertowConfig
 com.ruoyi.common.web.config.WebMvcConfig
 com.ruoyi.common.web.config.FilterConfig
+com.ruoyi.common.web.config.SwaggerConfig

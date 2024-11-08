@@ -14,6 +14,7 @@ import java.util.Objects;
  * @author coriander
  */
 public class ServletUtil {
+    
     /**
      * 获取request
      */
@@ -24,7 +25,7 @@ public class ServletUtil {
             return null;
         }
     }
-
+    
     public static ServletRequestAttributes getRequestAttributes() {
         try {
             RequestAttributes attributes = RequestContextHolder.getRequestAttributes();
@@ -33,15 +34,14 @@ public class ServletUtil {
             return null;
         }
     }
-
+    
     /**
      * 获取String参数
      */
     public static String getParameter(String name) {
-        String requestURI = getRequest().getRequestURI();
         return Objects.requireNonNull(getRequest()).getParameter(name);
     }
-
+    
     /**
      * 获取Boolean参数
      */

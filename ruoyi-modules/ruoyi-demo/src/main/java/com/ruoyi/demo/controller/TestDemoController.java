@@ -1,7 +1,10 @@
 package com.ruoyi.demo.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.ruoyi.common.core.result.Result;
 import com.ruoyi.common.core.result.ResultData;
+import com.ruoyi.common.core.utils.ServletUtil;
 import com.ruoyi.common.mybatis.domain.PageLight;
 import com.ruoyi.demo.domain.pojo.TestDemo;
 import com.ruoyi.demo.domain.vo.TestDemoVo;
@@ -13,6 +16,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+import static com.ruoyi.common.mybatis.domain.PageSupport.ORDER_BY_COLUMN_LIST;
 
 /**
  * @author Link
@@ -54,6 +61,9 @@ public class TestDemoController {
     
     @GetMapping
     public Result<TestDemoVo> get(Long id) {
+        
+        String orderListStr = ServletUtil.getParameter(ORDER_BY_COLUMN_LIST);
+        List<OrderItem> orderItems = JSONObject.parseArray(orderListStr, OrderItem.class);
         return Result.success(testDemoService.getVo(id));
     }
     

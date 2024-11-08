@@ -3,6 +3,7 @@ package com.ruoyi.demo.service.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ruoyi.common.mybatis.domain.PageLight;
+import com.ruoyi.common.mybatis.utils.PageUtil;
 import com.ruoyi.demo.domain.pojo.TestDemo;
 import com.ruoyi.demo.domain.vo.TestDemoVo;
 import com.ruoyi.demo.mapper.TestDemoMapper;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author Link
- * @date 2024-11-07
  */
 @Service
 @RequiredArgsConstructor
@@ -28,9 +28,7 @@ public class TestDemoServiceImpl extends ServiceImpl<TestDemoMapper, TestDemo> i
     
     @Override
     public PageLight<TestDemo> page() {
-        Page<TestDemo> page = new Page<>(1, 10);
-        
-        Page<TestDemo> page1 = testDemoMapper.page(page);
+        Page<TestDemo> page1 = testDemoMapper.page(PageUtil.getPage());
         return new PageLight<>(page1);
     }
 }

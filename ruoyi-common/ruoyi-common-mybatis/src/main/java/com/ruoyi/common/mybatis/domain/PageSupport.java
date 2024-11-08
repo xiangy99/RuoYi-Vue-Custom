@@ -24,9 +24,9 @@ public class PageSupport {
     public static final String PAGE_SIZE = "pageSize";
     
     /**
-     * 排序列
+     * 排序列。传入格式：[{"column":"id","asc":false}]
      */
-    public static final String ORDER_BY_COLUMN_LIST = "orderListStr";
+    public static final String ORDERS = "orders";
     
     
     /**
@@ -36,7 +36,7 @@ public class PageSupport {
         PageDomain pageDomain = new PageDomain();
         pageDomain.setPageNum(Convert.toInt(ServletUtil.getParameter(PAGE_NUM), 1));
         pageDomain.setPageSize(Convert.toInt(ServletUtil.getParameter(PAGE_SIZE), 10));
-        String orderListStr = ServletUtil.getParameter(ORDER_BY_COLUMN_LIST);
+        String orderListStr = ServletUtil.getParameter(ORDERS);
         List<OrderItem> orderItemList = null;
         try {
             orderItemList = JSONObject.parseArray(orderListStr, OrderItem.class);

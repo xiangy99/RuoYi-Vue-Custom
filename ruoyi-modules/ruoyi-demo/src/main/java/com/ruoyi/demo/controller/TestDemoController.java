@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static com.ruoyi.common.mybatis.domain.PageSupport.ORDER_BY_COLUMN_LIST;
+import static com.ruoyi.common.mybatis.domain.PageSupport.ORDERS;
 
 /**
  * @author Link
@@ -62,7 +62,7 @@ public class TestDemoController {
     @GetMapping
     public Result<TestDemoVo> get(Long id) {
         
-        String orderListStr = ServletUtil.getParameter(ORDER_BY_COLUMN_LIST);
+        String orderListStr = ServletUtil.getParameter(ORDERS);
         List<OrderItem> orderItems = JSONObject.parseArray(orderListStr, OrderItem.class);
         return Result.success(testDemoService.getVo(id));
     }

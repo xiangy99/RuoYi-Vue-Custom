@@ -1,31 +1,25 @@
 package com.ruoyi.system.domain.vo;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
-
 /**
- * $SysLoginUserVo
+ * $SysLoginUserInfoVo
  *
- * @author Link
+ * @author coriander
  */
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SysLoginUserVo {
+public class SysLoginUserInfoVo {
     
     private Long userId;
     
     private String username;
-    
-    private Set<String> roleList;
-    
-    private Set<String> permissionList;
-    
 }

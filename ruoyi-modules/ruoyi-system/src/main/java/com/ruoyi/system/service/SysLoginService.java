@@ -1,7 +1,7 @@
 package com.ruoyi.system.service;
 
 
-import com.ruoyi.system.domain.vo.SysLoginUserVo;
+import com.ruoyi.system.domain.vo.SysLoginVo;
 
 /**
  * $PassportService
@@ -12,6 +12,6 @@ public interface SysLoginService {
     
     Long login(String username, String password);
     
-    SysLoginUserVo getUserInfo(Long userId);
+    SysLoginVo getUserInfo(Long userId);
     
 }

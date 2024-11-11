@@ -64,7 +64,7 @@
           <svg-icon :icon-class="scope.row.icon"/>
         </template>
       </el-table-column>
-      <el-table-column prop="orderNum" label="排序" width="60"></el-table-column>
+      <el-table-column prop="sort" label="排序" width="60"></el-table-column>
       <el-table-column prop="perms" label="权限标识" :show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="component" label="组件路径" :show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="status" label="状态" width="80">
@@ -158,8 +158,8 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="显示排序" prop="orderNum">
-              <el-input-number v-model="form.orderNum" controls-position="right" :min="0"/>
+            <el-form-item label="显示排序" prop="sort">
+              <el-input-number v-model="form.sort" controls-position="right" :min="0"/>
             </el-form-item>
           </el-col>
           <el-col :span="12" v-if="form.menuType != 'F'">
@@ -321,7 +321,7 @@ export default {
         menuName: [
           {required: true, message: "菜单名称不能为空", trigger: "blur"}
         ],
-        orderNum: [
+        sort: [
           {required: true, message: "菜单顺序不能为空", trigger: "blur"}
         ],
         path: [
@@ -379,7 +379,7 @@ export default {
         menuName: undefined,
         icon: undefined,
         menuType: "M",
-        orderNum: undefined,
+        sort: undefined,
         isFrame: "1",
         isCache: "0",
         visible: "0",

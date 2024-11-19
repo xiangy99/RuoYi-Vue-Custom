@@ -1,13 +1,11 @@
 package com.ruoyi.common.web.config;
 
-import cn.hutool.extra.spring.SpringUtil;
+import com.ruoyi.common.core.utils.SpringUtils;
 import io.undertow.server.DefaultByteBufferPool;
 import io.undertow.websockets.jsr.WebSocketDeploymentInfo;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.thread.Threading;
 import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
-import org.springframework.core.env.Environment;
 import org.springframework.core.task.VirtualThreadTaskExecutor;
 
 /**
@@ -26,16 +24,12 @@ public class UndertowConfig implements WebServerFactoryCustomizer<UndertowServle
             deploymentInfo.addServletContextAttribute("io.undertow.websockets.jsr.WebSocketDeploymentInfo",
                     webSocketDeploymentInfo);
             // 使用虚拟线程
-            if (isVirtual()) {
+            if (SpringUtils.isVirtual()) {
                 VirtualThreadTaskExecutor executor = new VirtualThreadTaskExecutor("undertow-");
                 deploymentInfo.setExecutor(executor);
                 deploymentInfo.setAsyncExecutor(executor);
             }
         });
-    }
-    
-    public static boolean isVirtual() {
-        return Threading.VIRTUAL.isActive(SpringUtil.getBean(Environment.class));
     }
     
 }

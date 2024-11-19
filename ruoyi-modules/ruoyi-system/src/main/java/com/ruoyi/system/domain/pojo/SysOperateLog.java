@@ -1,23 +1,24 @@
 package com.ruoyi.system.domain.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.ruoyi.common.mybatis.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 /**
  * ${DESCRIPTION}
  *
- * @author Link 
- * @date 2024-11-08 
- * 
+ * @author Link
+ * @date 2024-11-08
  */
 
 /**
@@ -34,6 +35,7 @@ public class SysOperateLog extends BaseEntity implements Serializable {
     /**
      * 日志主键
      */
+    @TableId
     @Schema(description = "日志主键")
     @NotNull(message = "日志主键不能为null")
     private Long operateId;

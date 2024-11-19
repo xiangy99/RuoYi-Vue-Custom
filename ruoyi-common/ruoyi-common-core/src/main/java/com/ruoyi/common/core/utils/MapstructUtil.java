@@ -18,7 +18,7 @@ import java.util.Map;
  * @author Michelle.Chung
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class MapstructUtils {
+public class MapstructUtil {
     
     private final static Converter CONVERTER = SpringUtil.getBean(Converter.class);
     

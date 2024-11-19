@@ -11,7 +11,7 @@ import com.ruoyi.common.core.enums.YesOrNoEnum;
 import com.ruoyi.common.core.exception.BusinessException;
 import com.ruoyi.common.core.result.ResultCode;
 import com.ruoyi.common.core.utils.IdUtil;
-import com.ruoyi.common.core.utils.MapstructUtils;
+import com.ruoyi.common.core.utils.MapstructUtil;
 import com.ruoyi.common.core.utils.ValidatorUtil;
 import com.ruoyi.system.domain.bo.SysMenuModifyBO;
 import com.ruoyi.system.domain.bo.SysMenuSaveBO;
@@ -58,7 +58,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         if (YesOrNoEnum.YES.getCode().equals(param.getIsFrame()) && !this.isHttpUrl(param.getPath())) {
             throw new BusinessException(ResultCode.Business.MENU_EXTERNAL_LINK_MUST_BE_HTTP);
         }
-        SysMenu sysMenRecord = MapstructUtils.convert(param, SysMenu.class);
+        SysMenu sysMenRecord = MapstructUtil.convert(param, SysMenu.class);
         sysMenRecord.setMenuId(IdUtil.getId());
         sysMenRecord.setStatus(NormalDisableEnum.ENABLE.getCode());
         sysMenRecord.setCreateTime(LocalDateTime.now());

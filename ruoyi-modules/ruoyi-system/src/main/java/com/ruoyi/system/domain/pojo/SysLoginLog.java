@@ -1,23 +1,24 @@
 package com.ruoyi.system.domain.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.ruoyi.common.mybatis.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.io.Serializable;
-import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 /**
  * ${DESCRIPTION}
  *
- * @author Link 
- * @date 2024-11-08 
- * 
+ * @author Link
+ * @date 2024-11-08
  */
 
 /**
@@ -34,6 +35,7 @@ public class SysLoginLog extends BaseEntity implements Serializable {
     /**
      * 访问ID
      */
+    @TableId
     @Schema(description = "访问ID")
     @NotNull(message = "访问ID不能为null")
     private Long infoId;

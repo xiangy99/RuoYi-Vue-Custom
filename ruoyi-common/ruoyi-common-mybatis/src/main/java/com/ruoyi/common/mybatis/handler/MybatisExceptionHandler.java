@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 /**
  * Mybatis异常处理器
  *
- * @author Lion Li
+ * @author xiangy
  */
 @Slf4j
 @RestControllerAdvice

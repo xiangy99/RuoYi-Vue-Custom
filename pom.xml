@@ -26,6 +26,7 @@
         
         <dynamic-datasource.version>4.3.1</dynamic-datasource.version>
         <mybatis-plus.version>3.5.9</mybatis-plus.version>
+        <redisson.version>3.37.0</redisson.version>
         
         <hutool.version>5.8.33</hutool.version>
         <lombok.version>1.18.34</lombok.version>
@@ -127,6 +128,13 @@
                 <version>${satoken.version}</version>
             </dependency>
             
+            <!--redisson-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+            
             
             <dependency>
                 <groupId>com.ruoyi</groupId>
@@ -161,6 +169,12 @@
             <dependency>
                 <groupId>com.ruoyi</groupId>
                 <artifactId>ruoyi-system</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-common-redis</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

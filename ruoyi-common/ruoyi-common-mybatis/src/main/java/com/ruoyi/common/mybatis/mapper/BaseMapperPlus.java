@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.reflect.GenericTypeUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.toolkit.Db;
-import com.ruoyi.common.core.utils.MapstructUtils;
-import com.ruoyi.common.core.utils.StreamUtils;
+import com.ruoyi.common.core.utils.MapstructUtil;
+import com.ruoyi.common.core.utils.StreamUtil;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -140,7 +140,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (ObjectUtil.isNull(obj)) {
             return null;
         }
-        return MapstructUtils.convert(obj, voClass);
+        return MapstructUtil.convert(obj, voClass);
     }
     
     /**
@@ -166,7 +166,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (CollUtil.isEmpty(list)) {
             return CollUtil.newArrayList();
         }
-        return MapstructUtils.convert(list, voClass);
+        return MapstructUtil.convert(list, voClass);
     }
     
     /**
@@ -192,7 +192,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (CollUtil.isEmpty(list)) {
             return CollUtil.newArrayList();
         }
-        return MapstructUtils.convert(list, voClass);
+        return MapstructUtil.convert(list, voClass);
     }
     
     /**
@@ -242,7 +242,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (ObjectUtil.isNull(obj)) {
             return null;
         }
-        return MapstructUtils.convert(obj, voClass);
+        return MapstructUtil.convert(obj, voClass);
     }
     
     /**
@@ -277,7 +277,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (CollUtil.isEmpty(list)) {
             return CollUtil.newArrayList();
         }
-        return MapstructUtils.convert(list, voClass);
+        return MapstructUtil.convert(list, voClass);
     }
     
     /**
@@ -309,7 +309,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (CollUtil.isEmpty(list)) {
             return (P) voPage;
         }
-        voPage.setRecords(MapstructUtils.convert(list, voClass));
+        voPage.setRecords(MapstructUtil.convert(list, voClass));
         return (P) voPage;
     }
     
@@ -322,7 +322,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
      * @return 查询到的符合条件的对象列表，经过转换为指定类型的对象后返回
      */
     default <C> List<C> listObj(Wrapper<T> wrapper, Function<? super Object, C> mapper) {
-        return StreamUtils.toList(this.selectObjs(wrapper), mapper);
+        return StreamUtil.toList(this.selectObjs(wrapper), mapper);
     }
     
 }

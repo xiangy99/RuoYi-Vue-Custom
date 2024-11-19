@@ -1,5 +1,6 @@
 package com.ruoyi.demo.domain.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.ruoyi.common.mybatis.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
@@ -29,6 +30,7 @@ public class TestDemo extends BaseEntity implements Serializable {
     /**
      * 主键
      */
+    @TableId
     @Schema(description = "主键")
     @NotNull(message = "主键不能为null")
     private Long id;

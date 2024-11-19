@@ -1,8 +1,13 @@
 package com.ruoyi.system.mapper;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruoyi.common.mybatis.mapper.BaseMapperPlus;
 import com.ruoyi.system.domain.pojo.SysDictType;
+import com.ruoyi.system.domain.query.SysDictTypeQuery;
 import com.ruoyi.system.domain.vo.SysDictTypeVo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * ${DESCRIPTION}
@@ -12,4 +17,17 @@ import com.ruoyi.system.domain.vo.SysDictTypeVo;
  */
 public interface SysDictTypeMapper extends BaseMapperPlus<SysDictType, SysDictTypeVo> {
     
+    SysDictTypeVo getByDictType(@Param("dictType") String dictType);
+    
+    /**
+     * 查询字典数据
+     *
+     * @param dictType 字典类型
+     * @return 字典数据
+     */
+    int countDictDataByDictType(@Param("dictType") String dictType);
+    
+    List<SysDictTypeVo> listAll(SysDictTypeQuery param);
+    
+    Page<SysDictTypeVo> page(@Param("param") SysDictTypeQuery param, Page<SysDictTypeQuery> page);
 }

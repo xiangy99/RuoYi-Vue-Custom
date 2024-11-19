@@ -30,8 +30,6 @@
         
         <hutool.version>5.8.33</hutool.version>
         <lombok.version>1.18.34</lombok.version>
-        <mapstruct-plus.version>1.4.5</mapstruct-plus.version>
-        <mapstruct-plus.lombok.version>0.2.0</mapstruct-plus.lombok.version>
         <knife4j-openapi3.version>4.5.0</knife4j-openapi3.version>
         <satoken.version>1.39.0</satoken.version>
         
@@ -79,12 +77,6 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
-            </dependency>
-            
-            <dependency>
-                <groupId>io.github.linpeilie</groupId>
-                <artifactId>mapstruct-plus-spring-boot-starter</artifactId>
-                <version>${mapstruct-plus.version}</version>
             </dependency>
             
             <!-- dynamic-datasource 多数据源-->
@@ -223,16 +215,6 @@
                             <groupId>org.springframework.boot</groupId>
                             <artifactId>spring-boot-configuration-processor</artifactId>
                             <version>${spring-boot.version}</version>
-                        </path>
-                        <path>
-                            <groupId>io.github.linpeilie</groupId>
-                            <artifactId>mapstruct-plus-processor</artifactId>
-                            <version>${mapstruct-plus.version}</version>
-                        </path>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok-mapstruct-binding</artifactId>
-                            <version>${mapstruct-plus.lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                     <compilerArgs>

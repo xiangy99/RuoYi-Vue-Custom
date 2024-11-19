@@ -3,7 +3,6 @@ package com.ruoyi.system.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.http.HttpUtil;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ruoyi.common.core.constant.Constants;
 import com.ruoyi.common.core.constant.UserConstants;
 import com.ruoyi.common.core.enums.NormalDisableEnum;
@@ -11,7 +10,6 @@ import com.ruoyi.common.core.enums.YesOrNoEnum;
 import com.ruoyi.common.core.exception.BusinessException;
 import com.ruoyi.common.core.result.ResultCode;
 import com.ruoyi.common.core.utils.IdUtil;
-import com.ruoyi.common.core.utils.MapstructUtil;
 import com.ruoyi.common.core.utils.ValidatorUtil;
 import com.ruoyi.system.domain.bo.SysMenuModifyBO;
 import com.ruoyi.system.domain.bo.SysMenuSaveBO;
@@ -39,7 +37,7 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService {
+public class SysMenuServiceImpl implements SysMenuService {
     
     private final SysMenuMapper sysMenuMapper;
     
@@ -58,7 +56,7 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
         if (YesOrNoEnum.YES.getCode().equals(param.getIsFrame()) && !this.isHttpUrl(param.getPath())) {
             throw new BusinessException(ResultCode.Business.MENU_EXTERNAL_LINK_MUST_BE_HTTP);
         }
-        SysMenu sysMenRecord = MapstructUtil.convert(param, SysMenu.class);
+        SysMenu sysMenRecord = BeanUtil.copyProperties(param, SysMenu.class);
         sysMenRecord.setMenuId(IdUtil.getId());
         sysMenRecord.setStatus(NormalDisableEnum.ENABLE.getCode());
         sysMenRecord.setCreateTime(LocalDateTime.now());

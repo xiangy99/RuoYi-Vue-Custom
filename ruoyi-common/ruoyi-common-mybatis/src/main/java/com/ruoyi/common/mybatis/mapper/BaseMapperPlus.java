@@ -1,15 +1,13 @@
 package com.ruoyi.common.mybatis.mapper;
 
+import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.reflect.GenericTypeUtils;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.toolkit.Db;
-import com.ruoyi.common.core.utils.MapstructUtil;
 import com.ruoyi.common.core.utils.StreamUtil;
 
 import java.io.Serializable;
@@ -140,7 +138,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (ObjectUtil.isNull(obj)) {
             return null;
         }
-        return MapstructUtil.convert(obj, voClass);
+        return BeanUtil.copyProperties(obj, voClass);
     }
     
     /**
@@ -166,7 +164,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (CollUtil.isEmpty(list)) {
             return CollUtil.newArrayList();
         }
-        return MapstructUtil.convert(list, voClass);
+        return BeanUtil.copyToList(list, voClass);
     }
     
     /**
@@ -192,7 +190,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (CollUtil.isEmpty(list)) {
             return CollUtil.newArrayList();
         }
-        return MapstructUtil.convert(list, voClass);
+        return BeanUtil.copyToList(list, voClass);
     }
     
     /**
@@ -242,7 +240,7 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (ObjectUtil.isNull(obj)) {
             return null;
         }
-        return MapstructUtil.convert(obj, voClass);
+        return BeanUtil.copyProperties(obj, voClass);
     }
     
     /**
@@ -277,41 +275,9 @@ public interface BaseMapperPlus<T, V> extends BaseMapper<T> {
         if (CollUtil.isEmpty(list)) {
             return CollUtil.newArrayList();
         }
-        return MapstructUtil.convert(list, voClass);
+        return BeanUtil.copyToList(list, voClass);
     }
     
-    /**
-     * 根据条件分页查询VO对象列表
-     *
-     * @param page    分页信息
-     * @param wrapper 查询条件Wrapper
-     * @return 查询到的VO对象分页列表
-     */
-    default <P extends IPage<V>> P getPageVo(IPage<T> page, Wrapper<T> wrapper) {
-        return getPageVo(page, wrapper, this.currentVoClass());
-    }
-    
-    /**
-     * 根据条件分页查询实体对象列表，并将其转换为指定的VO对象分页列表
-     *
-     * @param page    分页信息
-     * @param wrapper 查询条件Wrapper
-     * @param voClass 要转换的VO类的Class对象
-     * @param <C>     VO类的类型
-     * @param <P>     VO对象分页列表的类型
-     * @return 查询到的VO对象分页列表，经过转换为指定的VO类后返回
-     */
-    default <C, P extends IPage<C>> P getPageVo(IPage<T> page, Wrapper<T> wrapper, Class<C> voClass) {
-        // 根据条件分页查询实体对象列表
-        List<T> list = this.selectList(page, wrapper);
-        // 创建一个新的VO对象分页列表，并设置分页信息
-        IPage<C> voPage = new Page<>(page.getCurrent(), page.getSize(), page.getTotal());
-        if (CollUtil.isEmpty(list)) {
-            return (P) voPage;
-        }
-        voPage.setRecords(MapstructUtil.convert(list, voClass));
-        return (P) voPage;
-    }
     
     /**
      * 根据条件查询符合条件的对象，并将其转换为指定类型的对象列表

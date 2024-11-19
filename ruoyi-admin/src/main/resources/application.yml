@@ -89,6 +89,9 @@ springdoc:
     # 是否开启接口文档
     enabled: true
   group-configs:
+    - group: '系统模块'
+      display-name: '系统模块'
+      packages-to-scan: com.ruoyi.system
     - group: '演示模块'
       display-name: '演示模块'
       packages-to-scan: com.ruoyi.demo

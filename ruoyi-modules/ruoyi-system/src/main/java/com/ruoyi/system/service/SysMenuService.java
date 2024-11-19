@@ -1,9 +1,7 @@
 package com.ruoyi.system.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.ruoyi.system.domain.bo.SysMenuModifyBO;
 import com.ruoyi.system.domain.bo.SysMenuSaveBO;
-import com.ruoyi.system.domain.pojo.SysMenu;
 import com.ruoyi.system.domain.query.SysMenuQuery;
 import com.ruoyi.system.domain.vo.RouterVo;
 import com.ruoyi.system.domain.vo.SysMenuVo;
@@ -13,7 +11,7 @@ import java.util.List;
 /**
  * @author Link
  */
-public interface SysMenuService extends IService<SysMenu> {
+public interface SysMenuService {
     
     void save(SysMenuSaveBO param);
     

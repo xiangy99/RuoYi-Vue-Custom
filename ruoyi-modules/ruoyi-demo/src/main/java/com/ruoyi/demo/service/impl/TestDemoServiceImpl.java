@@ -2,6 +2,7 @@ package com.ruoyi.demo.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.ruoyi.common.mybatis.domain.BasePageQuery;
 import com.ruoyi.common.mybatis.domain.PageLight;
 import com.ruoyi.common.mybatis.utils.PageUtil;
 import com.ruoyi.demo.domain.pojo.TestDemo;
@@ -28,7 +29,7 @@ public class TestDemoServiceImpl extends ServiceImpl<TestDemoMapper, TestDemo> i
     
     @Override
     public PageLight<TestDemo> page() {
-        Page<TestDemo> page1 = testDemoMapper.page(PageUtil.getPage());
+        Page<TestDemo> page1 = testDemoMapper.page(PageUtil.getPage(new BasePageQuery()));
         return new PageLight<>(page1);
     }
 }

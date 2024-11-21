@@ -1,13 +1,11 @@
 package com.ruoyi.system.domain.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.ruoyi.common.mybatis.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
@@ -26,11 +24,10 @@ import java.time.LocalDateTime;
  */
 @Schema(description = "操作日志记录")
 @Data
-@EqualsAndHashCode(callSuper = true)
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SysOperateLog extends BaseEntity implements Serializable {
+public class SysOperateLog implements Serializable {
     
     /**
      * 日志主键

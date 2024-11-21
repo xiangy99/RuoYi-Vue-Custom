@@ -1,5 +1,6 @@
 package com.ruoyi.system.domain.query;
 
+import com.ruoyi.common.mybatis.domain.BasePageQuery;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +22,7 @@ import java.util.Map;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SysDictTypeQuery implements Serializable {
+public class SysDictTypeQuery extends BasePageQuery implements Serializable {
     
     /**
      * 字典名称

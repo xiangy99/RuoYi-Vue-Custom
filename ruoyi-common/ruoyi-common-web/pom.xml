@@ -33,6 +33,11 @@
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-common-core</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-common-log</artifactId>
+        </dependency>
     
     </dependencies>
 </project>

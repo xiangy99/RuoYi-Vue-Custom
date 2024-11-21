@@ -1,10 +1,9 @@
 package com.ruoyi.demo.controller;
 
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.ruoyi.common.core.result.Result;
 import com.ruoyi.common.core.result.ResultData;
-import com.ruoyi.common.core.utils.ServletUtil;
+import com.ruoyi.common.log.annotation.Log;
+import com.ruoyi.common.log.enums.LogBusinessTypeEnum;
 import com.ruoyi.common.mybatis.domain.PageLight;
 import com.ruoyi.demo.domain.pojo.TestDemo;
 import com.ruoyi.demo.domain.vo.TestDemoVo;
@@ -18,10 +17,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
-
-import static com.ruoyi.common.mybatis.domain.PageSupport.ORDERS;
 
 /**
  * @author Link
@@ -68,13 +63,11 @@ public class TestDemoController {
     @Operation(summary = "详情", description = "根据ID获取详情")
     @GetMapping
     public Result<TestDemoVo> get(Long id) {
-        
-        String orderListStr = ServletUtil.getParameter(ORDERS);
-        List<OrderItem> orderItems = JSONObject.parseArray(orderListStr, OrderItem.class);
         return Result.success(testDemoService.getVo(id));
     }
     
     @Operation(summary = "分页", description = "查询分页列表")
+    @Log(title = "分页", businessType = LogBusinessTypeEnum.OTHER)
     @GetMapping("/page")
     public Result<PageLight<TestDemo>> page() {
         return Result.success(testDemoService.page());

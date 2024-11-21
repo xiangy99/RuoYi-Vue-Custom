@@ -130,7 +130,7 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
     
     @Override
     public PageLight<SysDictTypeVo> page(SysDictTypeQuery param) {
-        Page<SysDictTypeVo> sysDictTypeList = sysDictTypeMapper.page(param, PageUtil.getPage());
+        Page<SysDictTypeVo> sysDictTypeList = sysDictTypeMapper.page(param, PageUtil.getPage(param));
         return new PageLight<>(sysDictTypeList);
     }
     

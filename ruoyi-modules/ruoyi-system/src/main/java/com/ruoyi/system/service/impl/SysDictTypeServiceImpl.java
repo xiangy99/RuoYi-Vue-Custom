@@ -150,4 +150,10 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
     public void resetDictCache() {
         CacheUtil.clear(CacheNames.SYS_DICT);
     }
+    
+    public static void main(String[] args) {
+        for (int i = 0; i < 50; i++) {
+            System.out.println(IdUtil.getId());
+        }
+    }
 }

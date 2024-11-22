@@ -1,5 +1,6 @@
 package com.ruoyi.system.mapper;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruoyi.common.mybatis.mapper.BaseMapperPlus;
 import com.ruoyi.system.domain.pojo.SysDictData;
 import com.ruoyi.system.domain.query.SysDictDataQuery;
@@ -25,6 +26,8 @@ public interface SysDictDataMapper extends BaseMapperPlus<SysDictData, SysDictDa
     List<SysDictDataVo> listByDictType(@Param("dictType") String dictType);
     
     List<SysDictDataVo> listAll(SysDictDataQuery param);
+    
+    Page<SysDictDataVo> page(@Param("param") SysDictDataQuery param, Page<SysDictDataQuery> page);
     
     SysDictDataVo getByDictTypeAndDictValue(@Param("dictType") String dictType, @Param("dictValue") String dictValue);
 }

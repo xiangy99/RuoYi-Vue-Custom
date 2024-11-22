@@ -243,8 +243,9 @@ public class IdUtil {
         IdUtil idWorker = new IdUtil(10, 10);
         for (int i = 0; i < 5; i++) {
             long id = idWorker.nextId();
+            //            System.out.println(id);
+            //            System.out.println(parseInfo(id));
             System.out.println(id);
-            System.out.println(parseInfo(id));
         }
     }
 }

@@ -117,13 +117,14 @@ public class IdUtil {
     
     // ==============================Methods==========================================
     
+    private static final IdUtil idWorker = new IdUtil(1, 1);
+    
     /**
      * 生成数据库主键ID
      *
      * @return 数据库主键ID
      */
     public static Long getId() {
-        IdUtil idWorker = new IdUtil(1, 1);
         return idWorker.nextId();
     }
     
@@ -240,12 +241,8 @@ public class IdUtil {
      * 测试
      */
     public static void main(String[] args) {
-        IdUtil idWorker = new IdUtil(10, 10);
-        for (int i = 0; i < 5; i++) {
-            long id = idWorker.nextId();
-            //            System.out.println(id);
-            //            System.out.println(parseInfo(id));
-            System.out.println(id);
+        for (int i = 0; i < 50; i++) {
+            System.out.println(IdUtil.getId());
         }
     }
 }

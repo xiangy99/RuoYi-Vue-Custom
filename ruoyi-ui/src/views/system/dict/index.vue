@@ -27,7 +27,7 @@
             style="width: 240px"
         >
           <el-option
-              v-for="dict in dict.type.sys_normal_disable"
+              v-for="dict in dict.type.sys_enable_status"
               :key="dict.value"
               :label="dict.label"
               :value="dict.value"
@@ -125,7 +125,7 @@
       </el-table-column>
       <el-table-column label="状态" align="center" prop="status">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
+          <dict-tag :options="dict.type.sys_enable_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
       <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true"/>
@@ -174,9 +174,20 @@
           <el-input v-model="form.dictType" placeholder="请输入字典类型"/>
         </el-form-item>
         <el-form-item label="状态" prop="status">
-          <el-radio-group v-model="form.status">
+          <el-tooltip class="item" effect="dark" content="默认字典无法修改状态" placement="top"
+                      v-if="form.isDefault==true">
+            <el-radio-group v-model="form.status" :disabled="true">
+              <el-radio
+                  v-for="dict in dict.type.sys_enable_status"
+                  :key="dict.value"
+                  :label="dict.value"
+              >{{ dict.label }}
+              </el-radio>
+            </el-radio-group>
+          </el-tooltip>
+          <el-radio-group v-model="form.status" v-else>
             <el-radio
-                v-for="dict in dict.type.sys_normal_disable"
+                v-for="dict in dict.type.sys_enable_status"
                 :key="dict.value"
                 :label="dict.value"
             >{{ dict.label }}
@@ -200,7 +211,7 @@ import {addType, delType, getType, pageType, refreshCache, updateType} from "@/a
 
 export default {
   name: "Dict",
-  dicts: ['sys_normal_disable'],
+  dicts: ['sys_enable_status'],
   data() {
     return {
       // 遮罩层

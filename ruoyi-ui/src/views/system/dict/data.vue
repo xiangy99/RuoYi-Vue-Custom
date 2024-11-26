@@ -22,7 +22,7 @@
       <el-form-item label="状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="数据状态" clearable>
           <el-option
-              v-for="dict in dict.type.sys_normal_disable"
+              v-for="dict in dict.type.sys_enable_status"
               :key="dict.value"
               :label="dict.label"
               :value="dict.value"
@@ -113,7 +113,7 @@
       <el-table-column label="字典排序" align="center" prop="sort"/>
       <el-table-column label="状态" align="center" prop="status">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
+          <dict-tag :options="dict.type.sys_enable_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
       <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true"/>
@@ -181,14 +181,27 @@
           </el-select>
         </el-form-item>
         <el-form-item label="状态" prop="status">
-          <el-radio-group v-model="form.status">
+          <el-tooltip class="item" effect="dark" content="默认字典无法修改状态" placement="top"
+                      v-if="form.isDefault==true">
+            <el-radio-group v-model="form.status" :disabled="true">
+              <el-radio
+                  v-for="dict in dict.type.sys_enable_status"
+                  :key="dict.value"
+                  :label="dict.value"
+              >{{ dict.label }}
+              </el-radio>
+            </el-radio-group>
+          </el-tooltip>
+          <el-radio-group v-model="form.status" v-else>
             <el-radio
-                v-for="dict in dict.type.sys_normal_disable"
+                v-for="dict in dict.type.sys_enable_status"
                 :key="dict.value"
                 :label="dict.value"
             >{{ dict.label }}
             </el-radio>
           </el-radio-group>
+
+
         </el-form-item>
         <el-form-item label="备注" prop="remark">
           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容"></el-input>
@@ -208,7 +221,7 @@ import {getType, optionselect as getDictOptionselect} from "@/api/system/dict/ty
 
 export default {
   name: "Data",
-  dicts: ['sys_normal_disable'],
+  dicts: ['sys_enable_status'],
   data() {
     return {
       // 遮罩层

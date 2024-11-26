@@ -12,7 +12,7 @@
       <el-form-item label="状态" prop="status">
         <el-select v-model="queryParams.status" placeholder="菜单状态" clearable>
           <el-option
-              v-for="dict in dict.type.sys_normal_disable"
+              v-for="dict in dict.type.sys_enable_status"
               :key="dict.value"
               :label="dict.label"
               :value="dict.value"
@@ -69,7 +69,7 @@
       <el-table-column prop="component" label="组件路径" :show-overflow-tooltip="true"></el-table-column>
       <el-table-column prop="status" label="状态" width="80">
         <template slot-scope="scope">
-          <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
+          <dict-tag :options="dict.type.sys_enable_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
       <el-table-column label="创建时间" align="center" prop="createTime">
@@ -263,7 +263,7 @@
               </span>
               <el-radio-group v-model="form.status">
                 <el-radio
-                    v-for="dict in dict.type.sys_normal_disable"
+                    v-for="dict in dict.type.sys_enable_status"
                     :key="dict.value"
                     :label="dict.value"
                 >{{ dict.label }}
@@ -289,7 +289,7 @@ import IconSelect from "@/components/IconSelect";
 
 export default {
   name: "Menu",
-  dicts: ['sys_show_hide', 'sys_normal_disable'],
+  dicts: ['sys_show_hide', 'sys_enable_status'],
   components: {Treeselect, IconSelect},
   data() {
     return {

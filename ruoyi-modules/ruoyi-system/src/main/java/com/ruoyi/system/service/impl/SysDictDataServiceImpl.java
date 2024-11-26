@@ -7,7 +7,7 @@ import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruoyi.common.core.constant.CacheNames;
 import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.enums.NormalDisableEnum;
+import com.ruoyi.common.core.enums.EnableStatusEnum;
 import com.ruoyi.common.core.exception.BusinessException;
 import com.ruoyi.common.core.result.ResultCode;
 import com.ruoyi.common.core.service.DictService;
@@ -22,7 +22,9 @@ import com.ruoyi.system.domain.bo.SysDictDataSaveBo;
 import com.ruoyi.system.domain.pojo.SysDictData;
 import com.ruoyi.system.domain.query.SysDictDataQuery;
 import com.ruoyi.system.domain.vo.SysDictDataVo;
+import com.ruoyi.system.domain.vo.SysDictTypeVo;
 import com.ruoyi.system.mapper.SysDictDataMapper;
+import com.ruoyi.system.mapper.SysDictTypeMapper;
 import com.ruoyi.system.service.SysDictDataService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,6 +52,8 @@ public class SysDictDataServiceImpl implements SysDictDataService, DictService {
     
     private final SysDictDataMapper sysDictDataMapper;
     
+    private final SysDictTypeMapper sysDictTypeMapper;
+    
     @CachePut(cacheNames = CacheNames.SYS_DICT, key = "#param.dictType")
     @Override
     public List<SysDictDataVo> save(SysDictDataSaveBo param) {
@@ -62,7 +66,7 @@ public class SysDictDataServiceImpl implements SysDictDataService, DictService {
         
         SysDictData sysDictDataRecord = BeanUtil.copyProperties(param, SysDictData.class);
         sysDictDataRecord.setDictCode(IdUtil.getId());
-        sysDictDataRecord.setStatus(param.getStatus() != null ? param.getStatus() : NormalDisableEnum.ENABLE.getCode());
+        sysDictDataRecord.setStatus(param.getStatus() != null ? param.getStatus() : EnableStatusEnum.ENABLE.getCode());
         sysDictDataRecord.setCreateTime(LocalDateTime.now());
         sysDictDataRecord.setUpdateTime(LocalDateTime.now());
         
@@ -134,6 +138,12 @@ public class SysDictDataServiceImpl implements SysDictDataService, DictService {
     @Override
     public List<SysDictDataVo> listDictDateByDictType(String dictType) {
         ValidatorUtil.validate(dictType);
+        // 查询类型是否停用
+        SysDictTypeVo dictTypeResult = sysDictTypeMapper.getByDictType(dictType);
+        if (dictTypeResult == null || EnableStatusEnum.DISABLE.getCode().equals(dictTypeResult.getStatus())) {
+            return Collections.emptyList();
+        }
+        
         List<SysDictDataVo> dicDataList = sysDictDataMapper.listByDictType(dictType);
         if (CollUtil.isNotEmpty(dicDataList)) {
             return dicDataList;

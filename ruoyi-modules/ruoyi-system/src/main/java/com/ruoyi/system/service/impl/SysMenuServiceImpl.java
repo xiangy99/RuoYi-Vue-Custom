@@ -5,7 +5,7 @@ import cn.hutool.core.collection.CollUtil;
 import cn.hutool.http.HttpUtil;
 import com.ruoyi.common.core.constant.Constants;
 import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.enums.NormalDisableEnum;
+import com.ruoyi.common.core.enums.EnableStatusEnum;
 import com.ruoyi.common.core.enums.YesOrNoEnum;
 import com.ruoyi.common.core.exception.BusinessException;
 import com.ruoyi.common.core.result.ResultCode;
@@ -58,7 +58,7 @@ public class SysMenuServiceImpl implements SysMenuService {
         }
         SysMenu sysMenRecord = BeanUtil.copyProperties(param, SysMenu.class);
         sysMenRecord.setMenuId(IdUtil.getId());
-        sysMenRecord.setStatus(NormalDisableEnum.ENABLE.getCode());
+        sysMenRecord.setStatus(EnableStatusEnum.ENABLE.getCode());
         sysMenRecord.setCreateTime(LocalDateTime.now());
         sysMenRecord.setUpdateTime(LocalDateTime.now());
         int i = sysMenuMapper.insert(sysMenRecord);
@@ -100,8 +100,7 @@ public class SysMenuServiceImpl implements SysMenuService {
         // 校验父级菜单是否合法
         if (param.getParentId() != 0L) {
             SysMenu parentSysMenuInfo = sysMenuMapper.selectById(param.getParentId());
-            if (parentSysMenuInfo == null || !parentSysMenuInfo.getStatus()
-                    .equals(NormalDisableEnum.ENABLE.getCode())) {
+            if (parentSysMenuInfo == null || !parentSysMenuInfo.getStatus().equals(EnableStatusEnum.ENABLE.getCode())) {
                 throw new BusinessException(ResultCode.Business.MENU_PARENT_DEPT_NO_EXIST_OR_DISABLED);
             }
         }

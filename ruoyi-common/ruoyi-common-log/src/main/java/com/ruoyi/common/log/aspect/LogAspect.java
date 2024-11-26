@@ -4,7 +4,7 @@ import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.extra.spring.SpringUtil;
 import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson2.JSON;
-import com.ruoyi.common.core.enums.CommonStatusEnum;
+import com.ruoyi.common.core.enums.ResultStatusEnum;
 import com.ruoyi.common.core.result.ResultData;
 import com.ruoyi.common.core.utils.ServletUtil;
 import com.ruoyi.common.core.utils.ip.AddressUtils;
@@ -81,7 +81,7 @@ public class LogAspect {
         try {
             // *========数据库日志=========*//
             OperateLogEvent operateLogEvent = new OperateLogEvent();
-            operateLogEvent.setOperateStatus(CommonStatusEnum.SUCCESS.getCode());
+            operateLogEvent.setOperateStatus(ResultStatusEnum.SUCCESS.getCode());
             // 请求的地址
             
             String ip = IpUtil.getIpAddress(ServletUtil.getRequest());
@@ -91,7 +91,7 @@ public class LogAspect {
             operateLogEvent.setOperateTime(LocalDateTime.now());
             
             if (e != null) {
-                operateLogEvent.setOperateStatus(CommonStatusEnum.FAIL.getCode());
+                operateLogEvent.setOperateStatus(ResultStatusEnum.FAIL.getCode());
                 operateLogEvent.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 2000));
             }
             // 设置方法名称

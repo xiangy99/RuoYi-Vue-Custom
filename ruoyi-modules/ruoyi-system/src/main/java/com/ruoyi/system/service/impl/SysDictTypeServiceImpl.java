@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruoyi.common.core.constant.CacheNames;
 import com.ruoyi.common.core.constant.UserConstants;
-import com.ruoyi.common.core.enums.NormalDisableEnum;
+import com.ruoyi.common.core.enums.EnableStatusEnum;
 import com.ruoyi.common.core.exception.BusinessException;
 import com.ruoyi.common.core.result.ResultCode;
 import com.ruoyi.common.core.utils.IdUtil;
@@ -56,7 +56,7 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         
         SysDictType sysDictTypeRecord = BeanUtil.copyProperties(param, SysDictType.class);
         sysDictTypeRecord.setDictId(IdUtil.getId());
-        sysDictTypeRecord.setStatus(param.getStatus() != null ? param.getStatus() : NormalDisableEnum.ENABLE.getCode());
+        sysDictTypeRecord.setStatus(param.getStatus() != null ? param.getStatus() : EnableStatusEnum.ENABLE.getCode());
         sysDictTypeRecord.setCreateTime(LocalDateTime.now());
         sysDictTypeRecord.setUpdateTime(LocalDateTime.now());
         

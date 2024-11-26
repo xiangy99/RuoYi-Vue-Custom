@@ -3,12 +3,12 @@ package com.ruoyi.common.core.enums;
 import lombok.Getter;
 
 /**
- * 对应字典：sys_normal_disable 0正常1停用
+ * 对应字典：sys_enable_status 0正常1停用
  *
  * @author coriander
  */
 @Getter
-public enum NormalDisableEnum {
+public enum EnableStatusEnum {
     
     ENABLE("0", "正常"),
     
@@ -18,7 +18,7 @@ public enum NormalDisableEnum {
     
     private final String value;
     
-    NormalDisableEnum(String code, String value) {
+    EnableStatusEnum(String code, String value) {
         this.code = code;
         this.value = value;
     }

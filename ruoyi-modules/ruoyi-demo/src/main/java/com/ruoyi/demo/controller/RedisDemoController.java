@@ -2,6 +2,7 @@ package com.ruoyi.demo.controller;
 
 import cn.hutool.core.collection.CollUtil;
 import com.ruoyi.common.core.result.ResultData;
+import com.ruoyi.common.redis.utils.CacheUtil;
 import com.ruoyi.common.redis.utils.RedisUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Link
@@ -50,5 +52,19 @@ public class RedisDemoController {
     @GetMapping("/cacheableDemo2")
     public Object cacheableDemo2(Object value) {
         return ResultData.success(value);
+    }
+    
+    @Operation(summary = "CacheUtil测试插入", description = "CacheUtil测试插入")
+    @GetMapping("/cacheableDemo3")
+    public Object cacheableDemo3() {
+        CacheUtil.put("cacheUtilTest", "testKey", CollUtil.toList(1, 2));
+        return ResultData.success();
+    }
+    
+    @Operation(summary = "CacheUtil测试查询", description = "CacheUtil测试查询")
+    @GetMapping("/cacheableDemo4")
+    public Object cacheableDemo4() {
+        List<Integer> result = CacheUtil.get("cacheUtilTest", "testKey");
+        return ResultData.success(result);
     }
 }

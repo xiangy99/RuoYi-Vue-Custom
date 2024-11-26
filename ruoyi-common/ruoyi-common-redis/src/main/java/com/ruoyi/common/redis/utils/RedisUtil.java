@@ -16,7 +16,7 @@ import java.time.Duration;
  * @author xiangy
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class RedisUtils {
+public class RedisUtil {
     
     private static final RedissonClient CLIENT = SpringUtil.getBean(RedissonClient.class);
     

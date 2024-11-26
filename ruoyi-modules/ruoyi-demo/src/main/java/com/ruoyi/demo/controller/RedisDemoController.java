@@ -3,7 +3,7 @@ package com.ruoyi.demo.controller;
 import cn.hutool.core.collection.CollUtil;
 import com.ruoyi.common.core.result.ResultData;
 import com.ruoyi.common.redis.utils.CacheUtil;
-import com.ruoyi.common.redis.utils.RedisUtils;
+import com.ruoyi.common.redis.utils.RedisUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.cache.annotation.Cacheable;
@@ -28,15 +28,15 @@ public class RedisDemoController {
     @Operation(summary = "set", description = "set到redis")
     @PostMapping("/set")
     public ResultData set() {
-        RedisUtils.setCacheObject("demo1", CollUtil.toList(1, 2, 3));
-        RedisUtils.setCacheObject("demo1:date", new Date());
+        RedisUtil.setCacheObject("demo1", CollUtil.toList(1, 2, 3));
+        RedisUtil.setCacheObject("demo1:date", new Date());
         return ResultData.success();
     }
     
     @Operation(summary = "get", description = "根据key获取内容")
     @GetMapping
     public Object get(@RequestParam String key) {
-        Date cacheObject = RedisUtils.getCacheObject(key);
+        Date cacheObject = RedisUtil.getCacheObject(key);
         return ResultData.success(cacheObject);
     }
     

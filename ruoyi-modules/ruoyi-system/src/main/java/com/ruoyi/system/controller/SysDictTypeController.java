@@ -11,6 +11,9 @@ import com.ruoyi.system.domain.query.SysDictTypeQuery;
 import com.ruoyi.system.domain.vo.SysDictTypeVo;
 import com.ruoyi.system.service.SysDictTypeService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +41,7 @@ public class SysDictTypeController {
         this.sysDictTypeService = sysDictTypeService;
     }
     
+    @Operation(summary = "保存", description = "保存")
     @PostMapping
     @Log(title = "字典类型管理", businessType = LogBusinessTypeEnum.SAVE)
     public ResultData save(@RequestBody SysDictTypeSaveBo param) {
@@ -45,6 +49,9 @@ public class SysDictTypeController {
         return ResultData.success();
     }
     
+    @Parameters(value = {
+            @Parameter(name = "dictTypeIds", description = "字典类型ID数组", in = ParameterIn.PATH, example = "1,2")})
+    @Operation(summary = "删除", description = "删除")
     @DeleteMapping("/{dictTypeIds}")
     @Log(title = "字典类型管理", businessType = LogBusinessTypeEnum.DELETE)
     public ResultData delete(@PathVariable("dictTypeIds") Long[] dictTypeIds) {
@@ -52,6 +59,7 @@ public class SysDictTypeController {
         return ResultData.success();
     }
     
+    @Operation(summary = "修改", description = "修改")
     @PutMapping
     @Log(title = "字典类型管理", businessType = LogBusinessTypeEnum.MODIFY)
     public ResultData modify(@RequestBody SysDictTypeModifyBo param) {
@@ -59,6 +67,8 @@ public class SysDictTypeController {
         return ResultData.success();
     }
     
+    @Parameters(value = {@Parameter(name = "dictTypeId", description = "字典类型ID", in = ParameterIn.PATH)})
+    @Operation(summary = "详情", description = "详情")
     @GetMapping("/{dictTypeId}")
     public Result<SysDictTypeVo> get(@PathVariable("dictTypeId") Long dictTypeId) {
         return ResultData.success(sysDictTypeService.get(dictTypeId));
@@ -73,6 +83,7 @@ public class SysDictTypeController {
     /**
      * 刷新字典缓存
      */
+    @Operation(summary = "清空缓存", description = "清空字段缓存")
     @Log(title = "字典类型", businessType = LogBusinessTypeEnum.CLEAN)
     @DeleteMapping("/refreshCache")
     public ResultData refreshCache() {
@@ -83,6 +94,7 @@ public class SysDictTypeController {
     /**
      * 获取字典选择框列表
      */
+    @Operation(summary = "获取字典选择框列表", description = "下拉选择框展示所有字典类型")
     @GetMapping("/optionselect")
     public ResultData optionselect() {
         List<SysDictTypeVo> sysDictTypeList = sysDictTypeService.list(new SysDictTypeQuery());

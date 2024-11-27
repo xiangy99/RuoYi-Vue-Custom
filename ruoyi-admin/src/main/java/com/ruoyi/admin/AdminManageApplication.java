@@ -1,9 +1,10 @@
-package com.ruoyi;
+package com.ruoyi.admin;
 
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.metrics.buffering.BufferingApplicationStartup;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * 启动程序
@@ -11,6 +12,7 @@ import org.springframework.boot.context.metrics.buffering.BufferingApplicationSt
  * @author xiangy
  */
 
+@ComponentScan(basePackages = {"com.ruoyi.demo", "com.ruoyi.system"})
 @SpringBootApplication
 public class AdminManageApplication {
     

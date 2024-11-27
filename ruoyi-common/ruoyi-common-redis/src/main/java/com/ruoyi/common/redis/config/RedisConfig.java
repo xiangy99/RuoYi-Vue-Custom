@@ -10,6 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.ruoyi.common.core.utils.SpringUtils;
 import com.ruoyi.common.redis.handler.KeyPrefixHandler;
+import com.ruoyi.common.redis.lock.RedissionLockService;
 import com.ruoyi.common.redis.properties.RedissonProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.client.codec.StringCodec;
@@ -94,7 +95,7 @@ public class RedisConfig {
         };
     }
     
-    /**
+    /*
      * redis集群配置 yml
      *
      * --- # redis 集群配置(单机与集群只能开启一个另一个需要注释掉)
@@ -141,4 +142,11 @@ public class RedisConfig {
      *     subscriptionMode: "MASTER"
      */
     
+    /**
+     * 分布式锁
+     */
+    @Bean
+    public RedissionLockService redissionLockService() {
+        return new RedissionLockService();
+    }
 }

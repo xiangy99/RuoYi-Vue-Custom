@@ -1,5 +1,7 @@
 package com.ruoyi.common.web.config;
 
+import com.ruoyi.common.web.advice.ResponseDataAdvice;
+import com.ruoyi.common.web.handler.GlobalExceptionHandler;
 import com.ruoyi.common.web.interceptor.PlusWebInvokeTimeInterceptor;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -50,5 +52,21 @@ public class WebMvcConfig implements WebMvcConfigurer {
         source.registerCorsConfiguration("/**", config);
         // 返回新的CorsFilter
         return new CorsFilter(source);
+    }
+    
+    /**
+     * 全局异常处理器
+     */
+    @Bean
+    public GlobalExceptionHandler globalExceptionHandler() {
+        return new GlobalExceptionHandler();
+    }
+    
+    /**
+     * 包装返回分结果处理
+     */
+    @Bean
+    public ResponseDataAdvice responseDataAdvice() {
+        return new ResponseDataAdvice();
     }
 }

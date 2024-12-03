@@ -18,7 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @date 2024-11-27
  */
 @Slf4j
-@Tag(name = "Lock分布式锁测试", description = "Lock分布式锁测试")
+@Tag(name = "LockController", description = "Lock分布式锁测试")
 @RestController
 @RequestMapping("/lock")
 public class LockController {

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Link
  * @date 2024-11-07
  */
-@Tag(name = "TestDemo测试", description = "TestDemoController测试")
+@Tag(name = "TestDemoController", description = "联调数据库测试")
 @RestController
 @RequestMapping("/testDemo")
 public class TestDemoController {

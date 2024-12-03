@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Link
  */
 
-@Tag(name = "返回结果封装测试", description = "HelloController测试")
+@Tag(name = "HelloController", description = "封装返回结果测试")
 @RestController
 @RequestMapping("/demo/hello")
 public class HelloController {

@@ -34,6 +34,7 @@
         <satoken.version>1.39.0</satoken.version>
         <ip2region.version>2.7.0</ip2region.version>
         <fastjson2.version>2.0.43</fastjson2.version>
+        <easyexcel.version>4.0.3</easyexcel.version>
         
         <!-- 限制框架中的fastjson版本 -->
         <fastjson.version>1.2.83</fastjson.version>
@@ -142,6 +143,11 @@
                 <version>${ip2region.version}</version>
             </dependency>
             
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
             
             <dependency>
                 <groupId>com.ruoyi</groupId>
@@ -188,6 +194,12 @@
             <dependency>
                 <groupId>com.ruoyi</groupId>
                 <artifactId>ruoyi-common-log</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-common-excel</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

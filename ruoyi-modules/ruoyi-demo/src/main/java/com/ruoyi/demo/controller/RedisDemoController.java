@@ -20,7 +20,7 @@ import java.util.List;
  * @author Link
  * @date 2024-11-19
  */
-@Tag(name = "RedisDemo测试", description = "RedisDemoController测试")
+@Tag(name = "RedisController", description = "RedisUtil和CacheUtil测试")
 @RestController
 @RequestMapping("/redisDemo")
 public class RedisDemoController {

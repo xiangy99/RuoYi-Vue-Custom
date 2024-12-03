@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     
     @Operation(summary = "返回String字符串", description = "hello方法返回String字符串")
-    @GetMapping
+    @GetMapping(produces = "application/json; charset=UTF-8")
     public String hello() {
         return "hello";
     }

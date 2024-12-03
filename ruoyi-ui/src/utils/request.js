@@ -80,13 +80,13 @@ service.interceptors.response.use(res => {
       // 未设置状态码则默认成功状态
       const code = res.data.code || 200;
       // 获取错误信息
-      const msg = errorCode[code] || res.data.msg || errorCode['default']
+      const msg = errorCode[code] || res.data.message || errorCode['default']
       // 二进制数据则直接返回
       if (res.request.responseType === 'blob' || res.request.responseType
           === 'arraybuffer') {
         return res.data
       }
-      if (code === 401) {
+      if (code >= 41000 && code <= 41099) {
         if (!isRelogin.show) {
           isRelogin.show = true;
           MessageBox.confirm('登录状态已过期，您可以继续留在该页面，或者重新登录',
@@ -104,9 +104,10 @@ service.interceptors.response.use(res => {
           });
         }
         return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
-      } else if (code === 500) {
-        Message({message: msg, type: 'error'})
-        return Promise.reject(new Error(msg))
+      } else if (code >= 40000 && code <= 49999) {
+        // 40000~49999 为业务逻辑 错误码 （无代码异常，代码正常流转，并返回提示给用户）
+        Message({message: msg, type: "error"});
+        return Promise.reject(new Error(msg));
       } else if (code === 601) {
         Message({message: msg, type: 'warning'})
         return Promise.reject('error')

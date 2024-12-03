@@ -144,14 +144,28 @@
               v-hasPermi="['system:dict:edit']"
           >修改
           </el-button>
-          <el-button
-              size="mini"
-              type="text"
-              icon="el-icon-delete"
-              @click="handleDelete(scope.row)"
-              v-hasPermi="['system:dict:remove']"
+
+
+          <el-tooltip class="item" effect="dark" content="默认字典无法删除" placement="top"
+                      v-if="scope.row.isDefault==true">
+            <el-button
+                size="mini"
+                type="text"
+                icon="el-icon-delete"
+                v-hasPermi="['system:dict:remove']"
+                :disabled="true"
+            >删除
+            </el-button>
+          </el-tooltip>
+          <el-button v-else
+                     size="mini"
+                     type="text"
+                     icon="el-icon-delete"
+                     @click="handleDelete(scope.row)"
+                     v-hasPermi="['system:dict:remove']"
           >删除
           </el-button>
+
         </template>
       </el-table-column>
     </el-table>

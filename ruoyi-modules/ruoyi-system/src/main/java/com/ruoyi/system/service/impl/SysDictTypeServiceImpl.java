@@ -26,7 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -57,8 +56,6 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         SysDictType sysDictTypeRecord = BeanUtil.copyProperties(param, SysDictType.class);
         sysDictTypeRecord.setDictId(IdUtil.getId());
         sysDictTypeRecord.setStatus(param.getStatus() != null ? param.getStatus() : EnableStatusEnum.ENABLE.getCode());
-        sysDictTypeRecord.setCreateTime(LocalDateTime.now());
-        sysDictTypeRecord.setUpdateTime(LocalDateTime.now());
         
         int i = sysDictTypeMapper.insert(sysDictTypeRecord);
         if (i != 1) {
@@ -103,7 +100,6 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         }
         
         SysDictType sysDictTypeRecord = BeanUtil.copyProperties(param, SysDictType.class);
-        sysDictTypeRecord.setUpdateTime(LocalDateTime.now());
         int i = sysDictTypeMapper.updateById(sysDictTypeRecord);
         if (i != 1) {
             throw new BusinessException(ResultCode.Business.DICT_TYPE_MODIFY_FAIL);
@@ -149,11 +145,5 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
     @Override
     public void resetDictCache() {
         CacheUtil.clear(CacheNames.SYS_DICT);
-    }
-    
-    public static void main(String[] args) {
-        for (int i = 0; i < 50; i++) {
-            System.out.println(IdUtil.getId());
-        }
     }
 }

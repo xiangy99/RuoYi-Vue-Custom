@@ -1,7 +1,9 @@
 package com.ruoyi.system.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.ruoyi.common.core.result.Result;
 import com.ruoyi.common.core.result.ResultData;
+import com.ruoyi.common.excel.utils.ExcelUtil;
 import com.ruoyi.common.log.annotation.Log;
 import com.ruoyi.common.log.enums.LogBusinessTypeEnum;
 import com.ruoyi.common.mybatis.domain.PageLight;
@@ -9,12 +11,14 @@ import com.ruoyi.system.domain.bo.SysDictTypeModifyBo;
 import com.ruoyi.system.domain.bo.SysDictTypeSaveBo;
 import com.ruoyi.system.domain.query.SysDictTypeQuery;
 import com.ruoyi.system.domain.vo.SysDictTypeVo;
+import com.ruoyi.system.domain.vo.export.SysDictTypeExportVo;
 import com.ruoyi.system.service.SysDictTypeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Link
@@ -99,5 +104,13 @@ public class SysDictTypeController {
     public ResultData optionselect() {
         List<SysDictTypeVo> sysDictTypeList = sysDictTypeService.list(new SysDictTypeQuery());
         return ResultData.success(sysDictTypeList);
+    }
+    
+    @Log(title = "字典类型管理", businessType = LogBusinessTypeEnum.EXPORT)
+    @PostMapping("/export")
+    public void export(@RequestBody SysDictTypeQuery param, HttpServletResponse response) {
+        List<SysDictTypeExportVo> list = sysDictTypeService.list(param).stream()
+                .map(v -> BeanUtil.copyProperties(v, SysDictTypeExportVo.class)).collect(Collectors.toList());
+        ExcelUtil.exportExcel(list, "字典类型", SysDictTypeExportVo.class, response);
     }
 }

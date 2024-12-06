@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class TestDemoServiceImpl extends ServiceImpl<TestDemoMapper, TestDemo> implements TestDemoService {
     
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
     private final TestDemoMapper testDemoMapper;
     
     @Override

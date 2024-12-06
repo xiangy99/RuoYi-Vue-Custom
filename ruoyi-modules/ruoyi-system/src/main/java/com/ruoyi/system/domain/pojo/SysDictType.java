@@ -1,5 +1,6 @@
 package com.ruoyi.system.domain.pojo;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.ruoyi.common.mybatis.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -43,6 +44,7 @@ public class SysDictType extends BaseEntity implements Serializable {
     /**
      * 字典名称
      */
+    @ExcelProperty(value = "字典名称")
     @Schema(description = "字典名称")
     @Size(max = 100, message = "字典名称最大长度要小于 100")
     @NotBlank(message = "字典名称不能为空")

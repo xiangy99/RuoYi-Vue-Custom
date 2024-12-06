@@ -1,7 +1,9 @@
 package com.ruoyi.system.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.ruoyi.common.core.result.Result;
 import com.ruoyi.common.core.result.ResultData;
+import com.ruoyi.common.excel.utils.ExcelUtil;
 import com.ruoyi.common.log.annotation.Log;
 import com.ruoyi.common.log.enums.LogBusinessTypeEnum;
 import com.ruoyi.common.mybatis.domain.PageLight;
@@ -9,12 +11,14 @@ import com.ruoyi.system.domain.bo.SysDictDataModifyBo;
 import com.ruoyi.system.domain.bo.SysDictDataSaveBo;
 import com.ruoyi.system.domain.query.SysDictDataQuery;
 import com.ruoyi.system.domain.vo.SysDictDataVo;
+import com.ruoyi.system.domain.vo.export.SysDictDataExportVo;
 import com.ruoyi.system.service.SysDictDataService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * $SysDictTypeController
@@ -90,5 +95,13 @@ public class SysDictDataController {
     @GetMapping("/{dictDataCode}")
     public Result<SysDictDataVo> get(@PathVariable("dictDataCode") Long dictDataCode) {
         return ResultData.success(sysDictDataService.get(dictDataCode));
+    }
+    
+    @Log(title = "字典数据管理", businessType = LogBusinessTypeEnum.EXPORT)
+    @PostMapping("/export")
+    public void export(@RequestBody SysDictDataQuery param, HttpServletResponse response) {
+        List<SysDictDataExportVo> list = sysDictDataService.list(param).stream()
+                .map(v -> BeanUtil.copyProperties(v, SysDictDataExportVo.class)).collect(Collectors.toList());
+        ExcelUtil.exportExcel(list, "字典数据", SysDictDataExportVo.class, response);
     }
 }

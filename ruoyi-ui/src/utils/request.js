@@ -141,10 +141,8 @@ export function download(url, params, filename, config) {
     background: "rgba(0, 0, 0, 0.7)",
   })
   return service.post(url, params, {
-    transformRequest: [(params) => {
-      return tansParams(params)
-    }],
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    data: params,
+    headers: {'Content-Type': 'application/json;charset=utf-8'},
     responseType: 'blob',
     ...config
   }).then(async (data) => {

@@ -106,6 +106,7 @@ public class SysDictTypeController {
         return ResultData.success(sysDictTypeList);
     }
     
+    @Operation(summary = "导出", description = "导出")
     @Log(title = "字典类型管理", businessType = LogBusinessTypeEnum.EXPORT)
     @PostMapping("/export")
     public void export(@RequestBody SysDictTypeQuery param, HttpServletResponse response) {

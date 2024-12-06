@@ -97,6 +97,7 @@ public class SysDictDataController {
         return ResultData.success(sysDictDataService.get(dictDataCode));
     }
     
+    @Operation(summary = "导出", description = "导出")
     @Log(title = "字典数据管理", businessType = LogBusinessTypeEnum.EXPORT)
     @PostMapping("/export")
     public void export(@RequestBody SysDictDataQuery param, HttpServletResponse response) {

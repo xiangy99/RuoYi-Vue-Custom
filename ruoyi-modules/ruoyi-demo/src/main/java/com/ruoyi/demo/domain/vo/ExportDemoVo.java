@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 /**
  * 带有下拉选的Excel导出
  *
- * @author Emil.Zhang
+ * @author xiangy
  */
 @Data
 @ExcelIgnoreUnannotated
@@ -39,7 +39,7 @@ public class ExportDemoVo {
      * 使用ExcelEnumFormat注解需要进行下拉选的部分
      */
     @ExcelProperty(value = "用户类型", index = 1, converter = ExcelEnumConvert.class)
-    @ExcelEnumFormat(enumClass = EnableStatusEnum.class, textField = "info")
+    @ExcelEnumFormat(enumClass = EnableStatusEnum.class, textField = "value")
     @NotEmpty(message = "用户类型不能为空")
     private String userStatus;
     

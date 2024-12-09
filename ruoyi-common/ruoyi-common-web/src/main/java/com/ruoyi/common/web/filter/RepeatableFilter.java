@@ -16,7 +16,7 @@ import java.io.IOException;
  * <p> Repeatable 过滤器</p>
  * 主要用于处理 HTTP 请求体，使得请求体可以被重复读取。 这个过滤器的作用是解决某些场景下请求体只能读取一次的问题，特别是当请求体被流式读取（如输入流）时，无法在后续的代码中再次读取它。
  *
- * @author ruoyi
+ * @author xiangy
  */
 public class RepeatableFilter implements Filter {
     

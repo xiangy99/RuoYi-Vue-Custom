@@ -10,15 +10,15 @@ import org.apache.commons.lang3.StringUtils;
 /**
  * 获取地址类
  *
- * @author Lion Li
+ * @author xiangy
  */
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class AddressUtils {
-
+    
     // 未知地址
     public static final String UNKNOWN = "XX XX";
-
+    
     public static String getRealAddressByIP(String ip) {
         if (StringUtils.isBlank(ip)) {
             return UNKNOWN;

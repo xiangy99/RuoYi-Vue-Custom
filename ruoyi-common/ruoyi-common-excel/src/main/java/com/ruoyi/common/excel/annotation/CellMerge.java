@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * <p>
  * 需搭配 {@link CellMergeStrategy} 策略使用
  *
- * @author Lion Li
+ * @author xiangy
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

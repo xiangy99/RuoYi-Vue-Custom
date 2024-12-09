@@ -81,7 +81,6 @@ public class ExportDemoVo {
      * </p>
      * 处理完毕后再判断是否市正确的值
      */
-    @NotNull(message = "请勿手动输入")
     private Integer provinceId;
     
     /**
@@ -96,7 +95,6 @@ public class ExportDemoVo {
     /**
      * 数据库中的市ID
      */
-    @NotNull(message = "请勿手动输入")
     private Integer cityId;
     
     /**
@@ -111,6 +109,5 @@ public class ExportDemoVo {
     /**
      * 数据库中的县ID
      */
-    @NotNull(message = "请勿手动输入")
     private Integer areaId;
 }

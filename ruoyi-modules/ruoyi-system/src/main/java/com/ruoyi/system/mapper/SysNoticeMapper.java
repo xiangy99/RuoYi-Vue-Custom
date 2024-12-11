@@ -1,8 +1,7 @@
 package com.ruoyi.system.mapper;
 
-import com.ruoyi.common.mybatis.mapper.BaseMapperPlus;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ruoyi.system.domain.pojo.SysNotice;
-import com.ruoyi.system.domain.vo.SysNoticeVo;
 
 /**
  * ${DESCRIPTION}
@@ -10,6 +9,6 @@ import com.ruoyi.system.domain.vo.SysNoticeVo;
  * @author Link
  * @date 2024-11-08
  */
-public interface SysNoticeMapper extends BaseMapperPlus<SysNotice, SysNoticeVo> {
+public interface SysNoticeMapper extends BaseMapper<SysNotice> {
     
 }

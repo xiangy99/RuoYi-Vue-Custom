@@ -1,8 +1,7 @@
 package com.ruoyi.system.mapper;
 
-import com.ruoyi.common.mybatis.mapper.BaseMapperPlus;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ruoyi.system.domain.pojo.SysPost;
-import com.ruoyi.system.domain.vo.SysPostVo;
 
 /**
  * ${DESCRIPTION}
@@ -10,6 +9,6 @@ import com.ruoyi.system.domain.vo.SysPostVo;
  * @author Link
  * @date 2024-11-08
  */
-public interface SysPostMapper extends BaseMapperPlus<SysPost, SysPostVo> {
+public interface SysPostMapper extends BaseMapper<SysPost> {
     
 }

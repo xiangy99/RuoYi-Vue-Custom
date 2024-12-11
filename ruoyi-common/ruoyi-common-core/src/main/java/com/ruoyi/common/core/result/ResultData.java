@@ -38,7 +38,7 @@ public class ResultData implements Serializable {
     /**
      * 返回时间
      */
-    @Schema(description = "响应时间戳(毫秒)", example = "1689402473000L")
+    @Schema(description = "响应时间戳(秒)", example = "1689402473L")
     private Long timestamp;
     
     @Schema(description = "校验错误列表")
@@ -47,7 +47,7 @@ public class ResultData implements Serializable {
     
     
     public ResultData() {
-        this.timestamp = System.currentTimeMillis();
+        this.timestamp = System.currentTimeMillis() / 1000;
     }
     
     

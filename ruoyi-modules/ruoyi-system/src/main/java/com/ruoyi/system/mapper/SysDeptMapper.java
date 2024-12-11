@@ -1,8 +1,7 @@
 package com.ruoyi.system.mapper;
 
-import com.ruoyi.common.mybatis.mapper.BaseMapperPlus;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ruoyi.system.domain.pojo.SysDept;
-import com.ruoyi.system.domain.vo.SysDeptVo;
 
 /**
  * ${DESCRIPTION}
@@ -10,6 +9,6 @@ import com.ruoyi.system.domain.vo.SysDeptVo;
  * @author Link
  * @date 2024-11-08
  */
-public interface SysDeptMapper extends BaseMapperPlus<SysDept, SysDeptVo> {
+public interface SysDeptMapper extends BaseMapper<SysDept> {
     
 }

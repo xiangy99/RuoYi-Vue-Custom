@@ -1,7 +1,7 @@
 package com.ruoyi.system.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ruoyi.common.mybatis.mapper.BaseMapperPlus;
 import com.ruoyi.system.domain.pojo.SysDictType;
 import com.ruoyi.system.domain.query.SysDictTypeQuery;
 import com.ruoyi.system.domain.vo.SysDictTypeVo;
@@ -15,7 +15,7 @@ import java.util.List;
  * @author Link
  * @date 2024-11-08
  */
-public interface SysDictTypeMapper extends BaseMapperPlus<SysDictType, SysDictTypeVo> {
+public interface SysDictTypeMapper extends BaseMapper<SysDictType> {
     
     SysDictTypeVo getByDictType(@Param("dictType") String dictType);
     

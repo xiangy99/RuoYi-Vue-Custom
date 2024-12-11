@@ -1,6 +1,6 @@
 package com.ruoyi.system.mapper;
 
-import com.ruoyi.common.mybatis.mapper.BaseMapperPlus;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ruoyi.system.domain.pojo.SysMenu;
 import com.ruoyi.system.domain.query.SysMenuQuery;
 import com.ruoyi.system.domain.vo.SysMenuVo;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author Link
  * @date 2024-11-08
  */
-public interface SysMenuMapper extends BaseMapperPlus<SysMenu, SysMenuVo> {
+public interface SysMenuMapper extends BaseMapper<SysMenu> {
     
     List<SysMenuVo> listMenuTreeAll();
     

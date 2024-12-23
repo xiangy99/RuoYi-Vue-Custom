@@ -359,7 +359,7 @@ export default {
     },
     /** 查询菜单下拉树结构 */
     getTreeselect() {
-      listMenu().then(response => {
+      listMenu({}).then(response => {
         this.menuOptions = [];
         const menu = {menuId: 0, menuName: '主类目', children: []};
         menu.children = this.handleTree(response.data, "menuId");

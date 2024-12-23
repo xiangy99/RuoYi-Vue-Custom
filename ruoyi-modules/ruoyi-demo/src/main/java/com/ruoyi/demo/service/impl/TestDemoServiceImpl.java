@@ -1,5 +1,6 @@
 package com.ruoyi.demo.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ruoyi.common.mybatis.domain.BasePageQuery;
@@ -23,7 +24,8 @@ public class TestDemoServiceImpl extends ServiceImpl<TestDemoMapper, TestDemo> i
     
     @Override
     public TestDemoVo getVo(Long id) {
-        return testDemoMapper.getVo(id);
+        TestDemo testDemo = testDemoMapper.selectById(id);
+        return BeanUtil.copyProperties(testDemo, TestDemoVo.class);
     }
     
     @Override

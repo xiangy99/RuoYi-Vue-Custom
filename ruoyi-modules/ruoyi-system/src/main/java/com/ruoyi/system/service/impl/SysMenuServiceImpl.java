@@ -207,9 +207,9 @@ public class SysMenuServiceImpl implements SysMenuService {
         menuId = menuId == null ? -1L : menuId;
         SysMenuVo sysMenuInfo = sysMenuMapper.getByMenuNameAndParentId(menuName, parentMenuId);
         if (sysMenuInfo != null && !menuId.equals(sysMenuInfo.getMenuId())) {
-            return UserConstants.NOT_UNIQUE;
+            return Boolean.FALSE;
         }
-        return UserConstants.UNIQUE;
+        return Boolean.TRUE;
     }
     
     @Override

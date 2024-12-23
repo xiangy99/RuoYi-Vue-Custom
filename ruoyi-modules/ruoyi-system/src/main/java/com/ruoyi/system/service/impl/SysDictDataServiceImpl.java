@@ -6,7 +6,6 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.collection.CollUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruoyi.common.core.constant.CacheNames;
-import com.ruoyi.common.core.constant.UserConstants;
 import com.ruoyi.common.core.enums.EnableStatusEnum;
 import com.ruoyi.common.core.exception.BusinessException;
 import com.ruoyi.common.core.result.ResultCode;
@@ -158,9 +157,9 @@ public class SysDictDataServiceImpl implements SysDictDataService, DictService {
         dictCode = dictCode == null ? -1 : dictCode;
         SysDictDataVo sysDictDataInfo = sysDictDataMapper.getByDictTypeAndDictValue(dictType, dictValue);
         if (sysDictDataInfo != null && !dictCode.equals(sysDictDataInfo.getDictCode())) {
-            return UserConstants.NOT_UNIQUE;
+            return Boolean.FALSE;
         }
-        return UserConstants.UNIQUE;
+        return Boolean.TRUE;
     }
     
     

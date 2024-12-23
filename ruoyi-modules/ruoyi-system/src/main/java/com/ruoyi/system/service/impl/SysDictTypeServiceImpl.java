@@ -3,7 +3,6 @@ package com.ruoyi.system.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ruoyi.common.core.constant.CacheNames;
-import com.ruoyi.common.core.constant.UserConstants;
 import com.ruoyi.common.core.enums.EnableStatusEnum;
 import com.ruoyi.common.core.exception.BusinessException;
 import com.ruoyi.common.core.result.ResultCode;
@@ -137,9 +136,9 @@ public class SysDictTypeServiceImpl implements SysDictTypeService {
         dictId = dictId == null ? -1 : dictId;
         SysDictTypeVo sysDictTypeInfo = sysDictTypeMapper.getByDictType(dictType);
         if (sysDictTypeInfo != null && !dictId.equals(sysDictTypeInfo.getDictId())) {
-            return UserConstants.NOT_UNIQUE;
+            return Boolean.FALSE;
         }
-        return UserConstants.UNIQUE;
+        return Boolean.TRUE;
     }
     
     @Override

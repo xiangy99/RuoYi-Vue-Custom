@@ -22,7 +22,7 @@ public class BasePageQuery implements Serializable {
     @Schema(description = "每页条数", example = "10")
     private Integer pageSize = 10;
     
-    @Schema(description = "排序", type = "List", example = "[{\"column\":\"sort\",\"asc\":\"desc\"},{\"column\":\"id\",\"asc\":\"desc\"}]")
+    @Schema(description = "排序", type = "List", example = "[{\"column\":\"id\",\"asc\":\"false\"}]")
     private List<OrderItem> orderList;
     
 }

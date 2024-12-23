@@ -18,4 +18,10 @@ public interface CacheNames {
      * 数据字典
      */
     String SYS_DICT = "sys_dict";
+    
+    
+    /**
+     * 系统配置
+     */
+    String SYS_CONFIG = "sys_config";
 }

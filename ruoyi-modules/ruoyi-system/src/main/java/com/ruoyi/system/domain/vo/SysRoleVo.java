@@ -17,5 +17,20 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @AllArgsConstructor
 public class SysRoleVo extends SysRole {
-
+    
+    private Long roleId;
+    
+    /**
+     * 用户是否存在此角色标识 默认不存在
+     */
+    private Boolean flag = false;
+    
+    public boolean isAdmin() {
+        return isAdmin(roleId);
+    }
+    
+    public static boolean isAdmin(Long roleId) {
+        return roleId != null && 1L == roleId;
+    }
+    
 }

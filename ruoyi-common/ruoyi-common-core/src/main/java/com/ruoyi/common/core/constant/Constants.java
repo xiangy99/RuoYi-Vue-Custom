@@ -21,4 +21,6 @@ public class Constants {
      * https请求
      */
     public static final String HTTPS = "https://";
+    
+    public static final String DEFAULT_SALT = "ry-vue-custom2024";
 }

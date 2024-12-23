@@ -17,5 +17,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @AllArgsConstructor
 public class SysDeptVo extends SysDept {
-
+    
+    /**
+     * 部门组级层级(最多支持3级部门组级层级)
+     */
+    private Integer ancestorsLevel;
+    
 }

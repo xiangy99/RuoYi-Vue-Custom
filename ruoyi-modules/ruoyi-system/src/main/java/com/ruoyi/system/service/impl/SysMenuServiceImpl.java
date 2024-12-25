@@ -11,6 +11,7 @@ import com.ruoyi.common.core.exception.BusinessException;
 import com.ruoyi.common.core.result.ResultCode;
 import com.ruoyi.common.core.utils.IdUtil;
 import com.ruoyi.common.core.utils.ValidatorUtil;
+import com.ruoyi.common.satoken.utils.SecurityUtils;
 import com.ruoyi.system.domain.bo.SysMenuModifyBO;
 import com.ruoyi.system.domain.bo.SysMenuSaveBO;
 import com.ruoyi.system.domain.pojo.SysMenu;
@@ -120,13 +121,11 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Override
     public List<SysMenuVo> listTreeByUserId(Long userId) {
         List<SysMenuVo> voList = sysMenuMapper.listMenuTreeAll();
-        ;
-        //        List<SysMenuVo> voList = new ArrayList<>();
-        //        if (SecurityUtils.isAdmin(userId)) {
-        //            voList = sysMenuMapper.listMenuTreeAll();
-        //        } else {
-        //            // TODO 根据用户ID查询菜单列表
-        //        }
+        if (SecurityUtils.isAdmin(userId)) {
+            voList = sysMenuMapper.listMenuTreeAll();
+        } else {
+            // TODO 根据用户ID查询菜单列表
+        }
         
         // 构建菜单树
         return getChildPerms(voList, 0);
@@ -181,12 +180,11 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Override
     public List<SysMenuVo> list(SysMenuQuery param, Long userId) {
         List<SysMenuVo> voList = sysMenuMapper.listAll(param);
-        //        List<SysMenuVo> voList = new ArrayList<>();
-        //        if (SecurityUtils.isAdmin(userId)) {
-        //            voList = sysMenuMapper.listAll(param);
-        //        } else {
-        //            // TODO 根据用户查询系统菜单列表
-        //        }
+        if (SecurityUtils.isAdmin(userId)) {
+            voList = sysMenuMapper.listAll(param);
+        } else {
+            // TODO 根据用户查询系统菜单列表
+        }
         return voList;
     }
     

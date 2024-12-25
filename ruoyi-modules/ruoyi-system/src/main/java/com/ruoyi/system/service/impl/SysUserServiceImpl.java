@@ -15,6 +15,7 @@ import com.ruoyi.common.core.utils.IdUtil;
 import com.ruoyi.common.core.utils.ValidatorUtil;
 import com.ruoyi.common.mybatis.domain.PageLight;
 import com.ruoyi.common.mybatis.utils.PageUtil;
+import com.ruoyi.common.satoken.utils.SecurityUtils;
 import com.ruoyi.system.domain.bo.SysUserModifyBo;
 import com.ruoyi.system.domain.bo.SysUserSaveBo;
 import com.ruoyi.system.domain.pojo.SysUser;
@@ -201,9 +202,9 @@ public class SysUserServiceImpl implements SysUserService {
      * @param userId 用户ID
      */
     private void checkUserAllowed(Long userId) {
-        //        if (SecurityUtils.isAdmin(userId)) {
-        //            throw new BusinessException(ResultCode.Business.UNSUPPORTED_OPERATION_ADMIN);
-        //        }
+        if (SecurityUtils.isAdmin(userId)) {
+            throw new BusinessException(ResultCode.Business.UNSUPPORTED_OPERATION_ADMIN);
+        }
     }
     
     /**

@@ -202,7 +202,7 @@ public class SysUserServiceImpl implements SysUserService {
      * @param userId 用户ID
      */
     private void checkUserAllowed(Long userId) {
-        if (SecurityUtils.isAdmin(userId)) {
+        if (SecurityUtils.isSuper(userId)) {
             throw new BusinessException(ResultCode.Business.UNSUPPORTED_OPERATION_ADMIN);
         }
     }

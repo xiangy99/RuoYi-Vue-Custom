@@ -103,7 +103,7 @@ public class SysUserController {
         Map<String, Object> vo = new HashMap<>();
         
         // 可选择的角色列表
-        List<SysRoleVo> roleList = SecurityUtils.isAdmin(userId) ? sysRoleVoList
+        List<SysRoleVo> roleList = SecurityUtils.isSuper(userId) ? sysRoleVoList
                 : sysRoleVoList.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList());
         vo.put("roleList", roleList);
         
@@ -156,7 +156,7 @@ public class SysUserController {
         SysUserVo user = sysUserService.get(userId);
         List<SysRoleVo> roles = sysRoleService.listRoleByUserId(userId);
         vo.put("user", user);
-        vo.put("roleList", SecurityUtils.isAdmin(userId) ? roles
+        vo.put("roleList", SecurityUtils.isSuper(userId) ? roles
                 : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
         return ResultData.success(vo);
     }

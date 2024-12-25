@@ -121,7 +121,7 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Override
     public List<SysMenuVo> listTreeByUserId(Long userId) {
         List<SysMenuVo> voList = sysMenuMapper.listMenuTreeAll();
-        if (SecurityUtils.isAdmin(userId)) {
+        if (SecurityUtils.isSuper(userId)) {
             voList = sysMenuMapper.listMenuTreeAll();
         } else {
             // TODO 根据用户ID查询菜单列表
@@ -180,7 +180,7 @@ public class SysMenuServiceImpl implements SysMenuService {
     @Override
     public List<SysMenuVo> list(SysMenuQuery param, Long userId) {
         List<SysMenuVo> voList = sysMenuMapper.listAll(param);
-        if (SecurityUtils.isAdmin(userId)) {
+        if (SecurityUtils.isSuper(userId)) {
             voList = sysMenuMapper.listAll(param);
         } else {
             // TODO 根据用户查询系统菜单列表

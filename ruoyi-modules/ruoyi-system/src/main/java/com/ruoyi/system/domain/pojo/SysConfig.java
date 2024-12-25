@@ -6,10 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -24,9 +23,8 @@ import java.io.Serializable;
  * 参数配置表
  */
 @Schema(description = "参数配置表")
-@Data
-@EqualsAndHashCode(callSuper = true)
-@SuperBuilder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SysConfig extends BaseEntity implements Serializable {

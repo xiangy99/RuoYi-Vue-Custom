@@ -6,7 +6,11 @@ import com.ruoyi.common.mybatis.domain.PageLight;
 import com.ruoyi.system.domain.query.SysOperateLogQuery;
 import com.ruoyi.system.domain.vo.SysOperateLogVo;
 import com.ruoyi.system.service.SysOperateLogService;
-import org.springframework.web.bind.annotation.GetMapping;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,18 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Link
  */
+@Tag(name = "操作日志管理", description = "操作日志管理")
 @RestController
 @RequestMapping("/system/operateLog")
+@RequiredArgsConstructor
 public class SysOperateLogController {
     
     private final SysOperateLogService sysOperateLogService;
     
-    public SysOperateLogController(SysOperateLogService sysOperateLogService) {
-        this.sysOperateLogService = sysOperateLogService;
-    }
-    
-    @GetMapping("/page")
-    public Result<PageLight<SysOperateLogVo>> page(SysOperateLogQuery param) {
+    @Operation(summary = "分页", description = "分页")
+    @PostMapping("/page")
+    public Result<PageLight<SysOperateLogVo>> page(@RequestBody SysOperateLogQuery param) {
         return ResultData.success(sysOperateLogService.page(param));
     }
 }

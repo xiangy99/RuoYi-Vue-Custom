@@ -7,10 +7,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Setter;
 
 import java.io.Serializable;
 
@@ -25,9 +24,8 @@ import java.io.Serializable;
  * 菜单权限表
  */
 @Schema(description = "菜单权限表")
-@Data
-@EqualsAndHashCode(callSuper = true)
-@SuperBuilder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SysMenu extends BaseEntity implements Serializable {

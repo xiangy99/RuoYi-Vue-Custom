@@ -78,7 +78,9 @@ public class SysUserServiceImpl implements SysUserService {
             return;
         }
         for (Long postId : postIdList) {
-            SysUserPost record = SysUserPost.builder().userId(userId).postId(postId).build();
+            SysUserPost record = new SysUserPost();
+            record.setUserId(userId);
+            record.setPostId(postId);
             sysUserPostMapper.insert(record);
         }
     }
@@ -88,7 +90,7 @@ public class SysUserServiceImpl implements SysUserService {
             return;
         }
         for (Long roleId : roleIdList) {
-            SysUserRole record = SysUserRole.builder().userId(userId).roleId(roleId).build();
+            SysUserRole record = new SysUserRole(userId, roleId);
             sysUserRoleMapper.insert(record);
         }
     }
@@ -188,7 +190,7 @@ public class SysUserServiceImpl implements SysUserService {
         }
         
         for (Long roleId : roleIds) {
-            SysUserRole record = SysUserRole.builder().userId(userId).roleId(roleId).build();
+            SysUserRole record = new SysUserRole(userId, roleId);
             sysUserRoleMapper.insert(record);
         }
     }

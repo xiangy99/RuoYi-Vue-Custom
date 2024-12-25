@@ -2,7 +2,6 @@ package com.ruoyi.system.domain.vo;
 
 
 import cn.hutool.http.HttpUtil;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +10,6 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@Builder
 public class MetaVo {
     
     /**

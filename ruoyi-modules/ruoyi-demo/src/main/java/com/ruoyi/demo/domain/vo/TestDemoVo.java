@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 /**
  * @author Link
@@ -14,7 +13,6 @@ import lombok.experimental.SuperBuilder;
 @Schema(description = "测试类Vo")
 @Getter
 @Setter
-@SuperBuilder
 @AllArgsConstructor
 public class TestDemoVo extends TestDemo {
 

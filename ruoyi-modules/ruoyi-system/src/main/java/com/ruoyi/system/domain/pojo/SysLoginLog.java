@@ -6,10 +6,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -25,9 +24,8 @@ import java.time.LocalDateTime;
  * 系统访问记录
  */
 @Schema(description = "系统访问记录")
-@Data
-@EqualsAndHashCode(callSuper = true)
-@SuperBuilder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SysLoginLog extends BaseEntity implements Serializable {

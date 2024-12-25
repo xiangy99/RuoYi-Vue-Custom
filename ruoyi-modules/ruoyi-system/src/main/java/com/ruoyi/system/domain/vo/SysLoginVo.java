@@ -1,9 +1,6 @@
 package com.ruoyi.system.domain.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Set;
@@ -15,9 +12,6 @@ import java.util.Set;
  */
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class SysLoginVo {
     
     private SysLoginUserInfoVo user;

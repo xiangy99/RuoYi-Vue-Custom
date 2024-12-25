@@ -7,10 +7,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -26,9 +25,8 @@ import java.time.LocalDateTime;
  * 用户信息表
  */
 @Schema(description = "用户信息表")
-@Data
-@EqualsAndHashCode(callSuper = true)
-@SuperBuilder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class SysUser extends BaseEntity implements Serializable {

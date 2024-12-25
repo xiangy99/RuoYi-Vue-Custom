@@ -2,11 +2,8 @@ package com.ruoyi.system.domain.vo;
 
 import com.ruoyi.system.domain.pojo.SysMenu;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +15,6 @@ import java.util.List;
 @Schema(description = "菜单权限表 Vo")
 @Getter
 @Setter
-@SuperBuilder
-@AllArgsConstructor
-@NoArgsConstructor
 public class SysMenuVo extends SysMenu {
     
     /**

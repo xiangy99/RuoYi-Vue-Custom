@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,13 +40,10 @@ import java.util.stream.Collectors;
 @Tag(name = "字典数据管理", description = "字典数据管理")
 @RestController
 @RequestMapping("/system/dict/data")
+@RequiredArgsConstructor
 public class SysDictDataController {
     
     private final SysDictDataService sysDictDataService;
-    
-    public SysDictDataController(SysDictDataService sysDictDataService) {
-        this.sysDictDataService = sysDictDataService;
-    }
     
     /**
      * 根据字典类型查询字典数据信息

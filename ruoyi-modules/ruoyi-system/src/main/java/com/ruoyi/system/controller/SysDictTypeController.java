@@ -19,6 +19,7 @@ import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,13 +39,10 @@ import java.util.stream.Collectors;
 @Tag(name = "字典类型管理", description = "字典类型管理")
 @RestController
 @RequestMapping("/system/dict/type")
+@RequiredArgsConstructor
 public class SysDictTypeController {
     
     private final SysDictTypeService sysDictTypeService;
-    
-    public SysDictTypeController(SysDictTypeService sysDictTypeService) {
-        this.sysDictTypeService = sysDictTypeService;
-    }
     
     @Operation(summary = "保存", description = "保存")
     @PostMapping

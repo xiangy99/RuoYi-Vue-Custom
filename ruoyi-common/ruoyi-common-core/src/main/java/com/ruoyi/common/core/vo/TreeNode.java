@@ -5,14 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
 @Getter
 @Setter
 @Accessors(chain = true)
-@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public class TreeNode {

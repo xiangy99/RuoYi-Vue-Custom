@@ -2,10 +2,8 @@ package com.ruoyi.system.domain.vo;
 
 import com.ruoyi.system.domain.pojo.SysUser;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
@@ -16,8 +14,6 @@ import java.util.List;
 @Schema(description = "用户信息表 Vo")
 @Getter
 @Setter
-@SuperBuilder
-@AllArgsConstructor
 public class SysUserVo extends SysUser {
     
     /**

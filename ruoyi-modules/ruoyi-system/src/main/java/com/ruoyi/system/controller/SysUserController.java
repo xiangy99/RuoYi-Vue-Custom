@@ -25,6 +25,12 @@ import com.ruoyi.system.service.SysDeptService;
 import com.ruoyi.system.service.SysPostService;
 import com.ruoyi.system.service.SysRoleService;
 import com.ruoyi.system.service.SysUserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,8 +55,10 @@ import java.util.stream.Collectors;
  *
  * @author Link
  */
+@Tag(name = "用户管理", description = "用户管理")
 @RestController
 @RequestMapping("/system/user")
+@RequiredArgsConstructor
 public class SysUserController {
     
     private final SysUserService sysUserService;
@@ -61,14 +69,7 @@ public class SysUserController {
     
     private final SysPostService sysPostService;
     
-    public SysUserController(SysUserService sysUserService, SysDeptService sysDeptService,
-            SysRoleService sysRoleService, SysPostService sysPostService) {
-        this.sysUserService = sysUserService;
-        this.sysDeptService = sysDeptService;
-        this.sysRoleService = sysRoleService;
-        this.sysPostService = sysPostService;
-    }
-    
+    @Operation(summary = "保存", description = "保存")
     @Log(title = "用户管理", businessType = LogBusinessTypeEnum.SAVE)
     @PostMapping
     public ResultData save(@RequestBody SysUserSaveBo param) {
@@ -76,6 +77,8 @@ public class SysUserController {
         return ResultData.success();
     }
     
+    @Parameters(value = {@Parameter(name = "userId", description = "用户ID", in = ParameterIn.PATH)})
+    @Operation(summary = "删除", description = "删除")
     @Log(title = "用户管理", businessType = LogBusinessTypeEnum.DELETE)
     @DeleteMapping("/{userId}")
     public ResultData delete(@PathVariable("userId") Long userId) {
@@ -83,6 +86,7 @@ public class SysUserController {
         return ResultData.success();
     }
     
+    @Operation(summary = "修改", description = "修改")
     @Log(title = "用户管理", businessType = LogBusinessTypeEnum.MODIFY)
     @PutMapping
     public ResultData modify(@RequestBody SysUserModifyBo param) {
@@ -90,6 +94,8 @@ public class SysUserController {
         return ResultData.success();
     }
     
+    @Parameters(value = {@Parameter(name = "postId", description = "用户ID", in = ParameterIn.PATH)})
+    @Operation(summary = "详情", description = "详情")
     @GetMapping({"/", "/{userId}"})
     public ResultData get(@PathVariable(value = "userId", required = false) Long userId) {
         List<SysRoleVo> sysRoleVoList = sysRoleService.list(new SysRoleQuery());
@@ -121,16 +127,19 @@ public class SysUserController {
         return ResultData.success(vo);
     }
     
-    @GetMapping("/page")
-    public Result<PageLight<SysUserVo>> page(SysUserQuery param) {
+    @Operation(summary = "分页", description = "分页")
+    @PostMapping("/page")
+    public Result<PageLight<SysUserVo>> page(@RequestBody SysUserQuery param) {
         return ResultData.success(sysUserService.page(param));
     }
     
+    @Operation(summary = "部门树", description = "部门树")
     @GetMapping("/listDeptTree")
-    public Result<List<TreeNode>> listDeptTree(SysDeptQuery param) {
+    public Result<List<TreeNode>> listDeptTree(@RequestBody SysDeptQuery param) {
         return ResultData.success(sysDeptService.listDeptTree(param));
     }
     
+    @Operation(summary = "修改用户状态", description = "修改用户状态")
     @Log(title = "用户管理", businessType = LogBusinessTypeEnum.MODIFY)
     @PutMapping("/updateStatus")
     public ResultData updateStatus(@RequestBody UpdateUserStatusBo param) {
@@ -138,6 +147,8 @@ public class SysUserController {
         return ResultData.success();
     }
     
+    @Parameters(value = {@Parameter(name = "userId", description = "用户ID", in = ParameterIn.PATH)})
+    @Operation(summary = "用户角色权限信息", description = "查询用户角色权限信息")
     @GetMapping("/authRole/{userId}")
     public ResultData authRole(@PathVariable("userId") Long userId) {
         Map<String, Object> vo = new HashMap<>();
@@ -150,6 +161,7 @@ public class SysUserController {
         return ResultData.success(vo);
     }
     
+    @Operation(summary = "用户授权角色", description = "用户授权角色")
     @Log(title = "用户管理", businessType = LogBusinessTypeEnum.GRANT)
     @PutMapping("/authRole")
     public ResultData authRole(Long userId, Long[] roleIds) {
@@ -163,6 +175,7 @@ public class SysUserController {
      * @param file          导入文件
      * @param updateSupport 是否更新已存在数据
      */
+    @Operation(summary = "导入", description = "导入")
     @Log(title = "用户管理", businessType = LogBusinessTypeEnum.IMPORT)
     @PostMapping(value = "/importData", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResultData importData(@RequestPart("file") MultipartFile file, boolean updateSupport) throws Exception {

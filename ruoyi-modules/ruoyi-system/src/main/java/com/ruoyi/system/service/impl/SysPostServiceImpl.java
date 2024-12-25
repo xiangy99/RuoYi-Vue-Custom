@@ -74,8 +74,11 @@ public class SysPostServiceImpl implements SysPostService {
                 throw new BusinessException(ResultCode.Business.POST_ALREADY_ASSIGN_TO_USER);
             }
             
-            SysPost sysPostRecord = SysPost.builder().postId(postId).isDeleted(YesOrNoEnum.YES.getCode())
-                    .updateTime(LocalDateTime.now()).build();
+            SysPost sysPostRecord = new SysPost();
+            sysPostRecord.setPostId(postId);
+            sysPostRecord.setIsDeleted(YesOrNoEnum.YES.getCode());
+            sysPostRecord.setUpdateTime(LocalDateTime.now());
+            
             int i = sysPostMapper.updateById(sysPostRecord);
             if (i != 1) {
                 throw new BusinessException(ResultCode.Business.POST_DELETE_FAIL);

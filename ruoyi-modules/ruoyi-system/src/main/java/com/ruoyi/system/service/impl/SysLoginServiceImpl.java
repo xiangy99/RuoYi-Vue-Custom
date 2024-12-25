@@ -22,7 +22,10 @@ public class SysLoginServiceImpl implements SysLoginService {
     public SysLoginVo getUserInfo(Long userId) {
         SysLoginVo vo = new SysLoginVo();
         
-        SysLoginUserInfoVo user = SysLoginUserInfoVo.builder().userId(userId).username("super").build();
+        SysLoginUserInfoVo user = new SysLoginUserInfoVo();
+        user.setUserId(userId);
+        user.setUsername("super");
+        
         vo.setUser(user);
         // TODO 根据loginId获取用户信息
         

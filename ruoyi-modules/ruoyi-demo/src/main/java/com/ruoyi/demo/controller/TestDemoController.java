@@ -68,7 +68,7 @@ public class TestDemoController {
     
     @Operation(summary = "分页", description = "查询分页列表")
     @Log(title = "分页", businessType = LogBusinessTypeEnum.OTHER)
-    @GetMapping("/page")
+    @PostMapping("/page")
     public Result<PageLight<TestDemo>> page() {
         return Result.success(testDemoService.page());
     }
